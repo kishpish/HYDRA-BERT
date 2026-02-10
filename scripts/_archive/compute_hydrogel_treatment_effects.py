@@ -41,15 +41,14 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ================================================================================
 # CONFIGURATION
-# ================================================================================
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 BASELINE_DIR = BASE_DIR / "febio_results"
 MESH_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/hydrogel_treatment_validation")
+OUTPUT_DIR = PROJECT_ROOT / "results" / "hydrogel_treatment_validation"
 
 PATIENTS = [
     "SCD0000101", "SCD0000201", "SCD0000301", "SCD0000401",
@@ -78,9 +77,7 @@ TISSUE_PROPERTIES = {
 }
 
 
-# ================================================================================
 # BIOMECHANICAL MODELS
-# ================================================================================
 
 def compute_stress_reduction(
     baseline_stress_kPa: float,
@@ -218,9 +215,7 @@ def compute_cv_improvement(
     return cv_improvement_pct
 
 
-# ================================================================================
 # DATA LOADING
-# ================================================================================
 
 def load_baseline_metrics(patient_id: str) -> Dict:
     """Load baseline FEBio simulation metrics."""
@@ -268,9 +263,7 @@ def load_infarct_data(patient_id: str) -> Dict:
     }
 
 
-# ================================================================================
 # MAIN COMPUTATION
-# ================================================================================
 
 def compute_patient_treatment(patient_id: str) -> Dict:
     """Compute treatment effects for one patient."""
@@ -469,9 +462,7 @@ def main():
         df.to_csv(csv_path, index=False)
 
         # Print summary
-        print(f"\n{'='*70}")
         print("HYDRA-BERT Hydrogel Treatment Validation Summary")
-        print(f"{'='*70}")
         print(f"Hydrogel: {OPTIMAL_HYDROGEL['polymer']}")
         print(f"  SMILES: {OPTIMAL_HYDROGEL['SMILES'][:50]}...")
         print(f"  Stiffness: {OPTIMAL_HYDROGEL['stiffness_kPa']} kPa")

@@ -41,29 +41,28 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # CONFIGURATION
-# =============================================================================
 
 # OpenCarp binary path
-OPENCARP_BIN = "/usr/local/bin/openCARP"
+OPENCARP_BIN = os.environ.get('OPENCARP_BIN', 'openCARP')
 
 # Alternative locations to search
 OPENCARP_ALTERNATIVES = [
-    "/home/ubuntu/openCARP/bin/openCARP",
     "/opt/openCARP/bin/openCARP",
+    "/usr/local/bin/openCARP",
     "/usr/bin/openCARP"
 ]
 
 # Base directories
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 PTS_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 LON_DIR = BASE_DIR / "laplace_complete_v2"
 BASELINE_RESULTS_DIR = BASE_DIR / "opencarp_results"
 
 # Output directory for hydrogel simulations
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/opencarp_hydrogel_simulations")
+OUTPUT_DIR = PROJECT_ROOT / "results" / "opencarp_hydrogel_simulations"
 
 # Patient list
 PATIENTS = [
@@ -73,9 +72,7 @@ PATIENTS = [
 ]
 
 
-# =============================================================================
 # CONDUCTIVITY PARAMETERS
-# =============================================================================
 
 @dataclass
 class ConductivityParams:
@@ -132,9 +129,7 @@ def get_hydrogel_conductivity(base_conductivity: float, hydrogel_conductivity: f
     return min(effective, max_healthy)
 
 
-# =============================================================================
 # IONIC MODEL PARAMETERS
-# =============================================================================
 
 @dataclass
 class IonicModelParams:
@@ -156,9 +151,7 @@ class IonicModelParams:
     hydrogel_params: str = "GNa*0.8,GK1*0.85,GCaL*0.85,Gto*0.6"
 
 
-# =============================================================================
 # MESH PREPARATION
-# =============================================================================
 
 def convert_pts_to_micrometers(pts_in: Path, pts_out: Path) -> int:
     """
@@ -296,9 +289,7 @@ def write_vtx_file(nodes: List[int], filepath: Path):
             f.write(f"{n}\n")
 
 
-# =============================================================================
 # PARAMETER FILE GENERATION
-# =============================================================================
 
 def generate_parameter_file(
     par_path: Path,
@@ -416,9 +407,7 @@ lats[0].method = 1
     return par_path
 
 
-# =============================================================================
 # SIMULATION RUNNER
-# =============================================================================
 
 def find_opencarp_binary() -> Optional[Path]:
     """Find OpenCarp binary on the system."""
@@ -432,7 +421,7 @@ def find_opencarp_binary() -> Optional[Path]:
             return Path(alt)
 
     # Search common locations
-    search_paths = ["/usr/local/bin", "/usr/bin", "/opt", "/home/ubuntu"]
+    search_paths = ["/usr/local/bin", "/usr/bin", "/opt"]
     for search_path in search_paths:
         for root, dirs, files in os.walk(search_path):
             if "openCARP" in files:
@@ -514,9 +503,7 @@ def run_opencarp_simulation(
     return results
 
 
-# =============================================================================
 # METRIC EXTRACTION
-# =============================================================================
 
 def extract_ep_metrics(output_dir: Path, patient_id: str) -> Dict[str, Any]:
     """
@@ -629,9 +616,7 @@ def compute_arrhythmia_index(metrics: Dict) -> float:
     return float(index)
 
 
-# =============================================================================
 # MAIN SIMULATION PIPELINE
-# =============================================================================
 
 def run_patient_ep_simulation(patient_id: str, design_params: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -800,16 +785,14 @@ def run_parallel_ep_simulations(designs_df: pd.DataFrame, n_workers: int = 24) -
     return results
 
 
-# =============================================================================
 # MAIN ENTRY POINT
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser(description="Run OpenCarp hydrogel EP simulations")
     parser.add_argument("--parallel", action="store_true", help="Run in parallel")
     parser.add_argument("--n_workers", type=int, default=24, help="Number of parallel workers")
     parser.add_argument("--designs_csv", type=str,
-                       default="/home/ubuntu/HYDRA-BERT-FINAL/results/therapeutic_final/best_designs_summary.csv",
+                       default=str(PROJECT_ROOT / "results" / "therapeutic_final" / "best_designs_summary.csv"),
                        help="Path to therapeutic designs CSV")
     parser.add_argument("--patient", type=str, help="Run single patient (for testing)")
     parser.add_argument("--tend", type=float, default=400.0, help="Simulation duration (ms)")
@@ -855,9 +838,7 @@ def main():
 
         # Print summary
         successful = sum(1 for r in results if r.get("status") == "COMPLETED")
-        print(f"\n{'='*60}")
         print(f"OpenCarp EP Simulation Summary")
-        print(f"{'='*60}")
         print(f"Total patients: {len(results)}")
         print(f"Successful: {successful}")
         print(f"Failed: {len(results) - successful}")

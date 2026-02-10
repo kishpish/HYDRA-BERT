@@ -29,7 +29,7 @@ HYDRA-BERT uses physics-based surrogate models for the initial 100M design evalu
 
 ```bash
 # FEBio 4.0
-ls /home/ubuntu/FEBio/bin/febio4
+ls $FEBIO_HOME/bin/febio4
 
 # OpenCarp (check installation)
 which openCARP || ls /usr/local/bin/openCARP
@@ -39,7 +39,7 @@ which openCARP || ls /usr/local/bin/openCARP
 
 Patient meshes must be available in:
 ```
-/home/ubuntu/SCD_MODELS/
+$SCD_MODELS_DIR/
 ├── simulation_ready/{patient}/{patient}_tet.pts     # Node coordinates
 ├── infarct_results_comprehensive/{patient}/{patient}_tagged.elem  # Tagged elements
 └── laplace_complete_v2/{patient}/{patient}.lon      # Fiber directions
@@ -52,7 +52,7 @@ Patient meshes must be available in:
 ### 1. Run All Simulations (Parallel)
 
 ```bash
-cd /home/ubuntu/HYDRA-BERT-FINAL
+cd /path/to/HYDRA-BERT
 
 # Use all 96 CPUs
 python scripts/simulations/run_complete_simulations.py --all_cpus
@@ -233,11 +233,11 @@ The optimal hydrogel formulation (GelMA_BioIL) parameters:
 
 ```bash
 # Check binary
-ls -la /home/ubuntu/FEBio/bin/febio4
+ls -la $FEBIO_HOME/bin/febio4
 
 # Test run
-export LD_LIBRARY_PATH=/home/ubuntu/FEBio/lib
-/home/ubuntu/FEBio/bin/febio4 -help
+export LD_LIBRARY_PATH=$FEBIO_HOME/lib
+$FEBIO_HOME/bin/febio4 -help
 ```
 
 ### OpenCarp Issues
@@ -254,9 +254,9 @@ openCARP --version
 
 ```bash
 # Verify mesh files exist
-ls /home/ubuntu/SCD_MODELS/simulation_ready/SCD0000101/
-ls /home/ubuntu/SCD_MODELS/infarct_results_comprehensive/SCD0000101/
-ls /home/ubuntu/SCD_MODELS/laplace_complete_v2/SCD0000101/
+ls $SCD_MODELS_DIR/simulation_ready/SCD0000101/
+ls $SCD_MODELS_DIR/infarct_results_comprehensive/SCD0000101/
+ls $SCD_MODELS_DIR/laplace_complete_v2/SCD0000101/
 ```
 
 ### Memory Issues

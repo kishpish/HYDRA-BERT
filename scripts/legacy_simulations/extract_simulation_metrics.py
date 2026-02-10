@@ -36,13 +36,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # CONFIGURATION
-# =============================================================================
 
 # Base directories
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
-HYDRA_RESULTS = Path("/home/ubuntu/HYDRA-BERT-FINAL/results")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
+HYDRA_RESULTS = PROJECT_ROOT / "results"
 
 # Simulation result directories
 FEBIO_RESULTS_DIR = HYDRA_RESULTS / "febio_hydrogel_simulations"
@@ -61,9 +60,7 @@ PATIENTS = [
 ]
 
 
-# =============================================================================
 # FEBIO XPLT PARSER
-# =============================================================================
 
 @dataclass
 class XPLTHeader:
@@ -171,9 +168,7 @@ def extract_strain_field(xplt_data: Dict, timestep: int = -1) -> Optional[np.nda
     return None
 
 
-# =============================================================================
 # FEBIO METRIC COMPUTATION
-# =============================================================================
 
 def compute_febio_metrics(
     patient_id: str,
@@ -286,9 +281,7 @@ def compute_febio_metrics(
     return metrics
 
 
-# =============================================================================
 # OPENCARP METRIC EXTRACTION
-# =============================================================================
 
 def extract_lat_data(lat_file: Path) -> Optional[np.ndarray]:
     """
@@ -414,9 +407,7 @@ def compute_opencarp_metrics(
     return metrics
 
 
-# =============================================================================
 # COMBINED EXTRACTION
-# =============================================================================
 
 def extract_all_metrics(patient_id: str) -> Dict[str, Any]:
     """
@@ -521,9 +512,7 @@ def extract_all_patients(
     return summary_df
 
 
-# =============================================================================
 # MAIN
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser(description="Extract simulation metrics")
@@ -552,9 +541,7 @@ def main():
         summary_df = extract_all_patients(PATIENTS, output_dir)
 
         # Print summary
-        print("\n" + "="*70)
         print("Metric Extraction Summary")
-        print("="*70)
         print(f"\nPatients processed: {len(PATIENTS)}")
         print(f"Therapeutic: {summary_df['is_therapeutic'].sum()}/{len(PATIENTS)}")
         print(f"\nResults saved to: {output_dir}")

@@ -26,7 +26,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Output directory
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/3d_visualizations/febio_quality')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / '3d_visualizations' / 'febio_quality'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Professional plotting settings
@@ -973,9 +973,7 @@ def create_animation(mesh, n_frames=30, filename="cardiac_cycle_febio.gif"):
 
 
 def main():
-    print("="*70)
     print("GENERATING FEBio-QUALITY CARDIAC MESH VISUALIZATIONS")
-    print("="*70)
 
     # Create high-resolution mesh
     print("\n1. Creating FEBio-compatible cardiac mesh...")
@@ -1014,9 +1012,7 @@ def main():
     print("\n5. Creating animation...")
     create_animation(mesh_hydrogel, n_frames=24)
 
-    print("\n" + "="*70)
     print("FEBio-QUALITY VISUALIZATION COMPLETE")
-    print("="*70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("*.png")):

@@ -20,7 +20,7 @@ import os
 from pathlib import Path
 
 # Set up output directory
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/3d_visualizations')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / '3d_visualizations'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # High-quality settings
@@ -993,9 +993,7 @@ def create_comparison_figure(vertices, regions, n_circ, n_long, n_trans, save_pa
 def main():
     """Generate all 3D cardiac visualizations."""
 
-    print("="*70)
     print("GENERATING 3D CARDIAC MESH VISUALIZATIONS")
-    print("="*70)
 
     # Create LV mesh
     print("\n1. Creating left ventricular mesh geometry...")
@@ -1137,9 +1135,7 @@ def main():
         print("\n   WARNING: imageio not installed. Skipping GIF generation.")
         print("   Install with: pip install imageio")
 
-    print("\n" + "="*70)
     print("VISUALIZATION GENERATION COMPLETE")
-    print("="*70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
     print("\nGenerated files:")
     for f in sorted(OUTPUT_DIR.glob("*")):

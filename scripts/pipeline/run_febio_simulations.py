@@ -48,9 +48,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-BASE_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
-SCD_MODELS = Path("/home/ubuntu/SCD_MODELS")
-FEBIO_BIN = Path("/home/ubuntu/FEBio/build/bin/febio4")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+SCD_MODELS = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
+FEBIO_BIN = Path(os.environ.get('FEBIO_BIN', 'febio4'))
 DESIGN_DIR = BASE_DIR / "results" / "design_generation"
 OUTPUT_DIR = BASE_DIR / "results" / "febio_simulations"
 

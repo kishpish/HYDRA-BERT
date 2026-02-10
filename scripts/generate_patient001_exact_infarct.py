@@ -11,9 +11,10 @@ from matplotlib.colors import Normalize
 from matplotlib.patches import Patch
 from matplotlib.animation import FuncAnimation, PillowWriter
 from pathlib import Path
+import os
 import meshio
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/patient_specific')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / 'patient_specific'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
@@ -26,7 +27,8 @@ plt.rcParams.update({
 
 def load_mesh_with_tissue_type():
     """Load mesh and compute point-level tissue classification from cell data."""
-    mesh = meshio.read('/home/ubuntu/SCD_MODELS/laplace_complete_v2/SCD0000101/SCD0000101_analysis.vtk')
+    _scd_models_dir = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
+    mesh = meshio.read(str(_scd_models_dir / 'laplace_complete_v2' / 'SCD0000101' / 'SCD0000101_analysis.vtk'))
 
     tissue_type_cells = mesh.cell_data['TissueType'][0].flatten()
     cells = mesh.cells[0].data
@@ -325,9 +327,7 @@ def create_rotation_gif(points, tissue_type, hydrogel_points, n_frames=36,
 
 
 def main():
-    print("=" * 70)
     print("PATIENT SCD0000101 - EXACT INFARCT FROM VTK TISSUETYPE")
-    print("=" * 70)
 
     print("\n1. Loading mesh with actual tissue classification...")
     points, tissue_type, infarct_ratio, border_ratio = load_mesh_with_tissue_type()
@@ -355,9 +355,7 @@ def main():
     create_rotation_gif(points, tissue_type, hydrogel_points,
                         n_frames=36, filename='patient001_exact_rotation.gif')
 
-    print("\n" + "=" * 70)
     print("VISUALIZATION COMPLETE")
-    print("=" * 70)
     print(f"\nOutput: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("patient001_exact*")):

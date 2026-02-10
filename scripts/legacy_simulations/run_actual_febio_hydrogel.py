@@ -43,24 +43,23 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # CONFIGURATION
-# =============================================================================
 
 # FEBio binary path - VERIFIED WORKING
-FEBIO_PATH = "/home/ubuntu/FEBio/bin/febio4"
-LD_LIBRARY_PATH = "/home/ubuntu/FEBio/lib"
+FEBIO_PATH = os.environ.get('FEBIO_BIN', 'febio4')
+LD_LIBRARY_PATH = os.environ.get('FEBIO_LIB_DIR', '')
 os.environ["LD_LIBRARY_PATH"] = LD_LIBRARY_PATH + ":" + os.environ.get("LD_LIBRARY_PATH", "")
 
 # Base directories
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 PTS_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 LON_DIR = BASE_DIR / "laplace_complete_v2"
 BASELINE_RESULTS_DIR = BASE_DIR / "febio_results"
 
 # Output directory for hydrogel simulations
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/febio_hydrogel_simulations")
+OUTPUT_DIR = PROJECT_ROOT / "results" / "febio_hydrogel_simulations"
 
 # Patient list (10 patients from therapeutic designs)
 PATIENTS = [
@@ -73,9 +72,7 @@ PATIENTS = [
 TAG_NAMES = {1: "healthy", 2: "border_zone", 3: "infarct_scar", 4: "hydrogel_treated"}
 
 
-# =============================================================================
 # MATERIAL PARAMETERS (Holzapfel-Ogden Cardiac Model)
-# =============================================================================
 
 @dataclass
 class HolzapfelOgdenParams:
@@ -191,9 +188,7 @@ def get_tissue_params(tissue_type: str, hydrogel_params: Optional[HydrogelParams
         raise ValueError(f"Unknown tissue type: {tissue_type}")
 
 
-# =============================================================================
 # MESH LOADING
-# =============================================================================
 
 class MeshLoader:
     """Loads and parses cardiac mesh files (pts, elem, lon)."""
@@ -303,9 +298,7 @@ class MeshLoader:
         return new_tags
 
 
-# =============================================================================
 # FEBIO FILE GENERATION
-# =============================================================================
 
 def generate_febio_xml(
     patient_id: str,
@@ -478,9 +471,7 @@ def generate_febio_xml(
     return output_path
 
 
-# =============================================================================
 # FEBIO SIMULATION RUNNER
-# =============================================================================
 
 def run_febio_simulation(feb_path: Path, output_dir: Path, n_threads: int = 4) -> Dict[str, Any]:
     """
@@ -550,9 +541,7 @@ def run_febio_simulation(feb_path: Path, output_dir: Path, n_threads: int = 4) -
     return results
 
 
-# =============================================================================
 # METRIC EXTRACTION
-# =============================================================================
 
 def extract_mechanics_metrics(xplt_path: Path, mesh_loader: MeshLoader) -> Dict[str, float]:
     """
@@ -705,9 +694,7 @@ def extract_strain_data(data: Dict) -> Optional[Dict]:
     }
 
 
-# =============================================================================
 # MAIN SIMULATION PIPELINE
-# =============================================================================
 
 def run_patient_simulation(patient_id: str, design_params: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -859,16 +846,14 @@ def run_parallel_simulations(designs_df: pd.DataFrame, n_workers: int = 16) -> L
     return results
 
 
-# =============================================================================
 # MAIN ENTRY POINT
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser(description="Run FEBio hydrogel simulations")
     parser.add_argument("--parallel", action="store_true", help="Run in parallel")
     parser.add_argument("--n_workers", type=int, default=16, help="Number of parallel workers")
     parser.add_argument("--designs_csv", type=str,
-                       default="/home/ubuntu/HYDRA-BERT-FINAL/results/therapeutic_final/best_designs_summary.csv",
+                       default=str(PROJECT_ROOT / "results" / "therapeutic_final" / "best_designs_summary.csv"),
                        help="Path to therapeutic designs CSV")
     parser.add_argument("--patient", type=str, help="Run single patient (for testing)")
 
@@ -905,9 +890,7 @@ def main():
 
         # Print summary
         successful = sum(1 for r in results if r.get("status") == "COMPLETED")
-        print(f"\n{'='*60}")
         print(f"FEBio Simulation Summary")
-        print(f"{'='*60}")
         print(f"Total patients: {len(results)}")
         print(f"Successful: {successful}")
         print(f"Failed: {len(results) - successful}")

@@ -37,9 +37,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-DESIGNS_FILE = Path("/home/ubuntu/HYDRA-BERT/results/all_designs_20260208_170223.csv")
-FEBIO_RESULTS = Path("/home/ubuntu/SCD_MODELS/febio_results")
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/diverse_polymer_optimization")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+DESIGNS_FILE = PROJECT_ROOT / "results" / "all_designs_20260208_170223.csv"
+FEBIO_RESULTS = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "febio_results"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "diverse_polymer_optimization"
 
 # Therapeutic thresholds
 THERAPEUTIC_THRESHOLDS = {

@@ -70,9 +70,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # DEFAULT CONFIGURATION
-# =============================================================================
 
 DEFAULT_CONFIG = {
     "ppo": {
@@ -579,13 +577,10 @@ def main():
     )
 
     # Training loop
-    print("=" * 80)
     print("HYDRA-BERT STAGE 2: PPO REINFORCEMENT LEARNING")
-    print("=" * 80)
     print(f"Environments: {total_envs}")
     print(f"Iterations: {config['ppo']['num_iterations']}")
     print(f"Steps per iteration: {config['ppo']['steps_per_iteration']}")
-    print("=" * 80)
 
     history = {"rewards": [], "policy_loss": [], "value_loss": [], "entropy": []}
     best_mean_reward = -float("inf")
@@ -685,9 +680,7 @@ def main():
     with open(output_dir / "training_curves.json", "w") as f:
         json.dump(history, f, indent=2)
 
-    print("\n" + "=" * 80)
-    print("PPO TRAINING COMPLETE")
-    print("=" * 80)
+    print("\nPPO TRAINING COMPLETE")
     print(f"Best mean reward: {best_mean_reward:.3f}")
     print(f"Model saved to: {output_dir}")
 

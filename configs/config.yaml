@@ -45,7 +45,7 @@ loss:
   class_weights: [1.0, 0.4, 2.0]  # harmful, beneficial, optimal
 
 data:
-  data_path: "/home/ubuntu/data_final/POLYBERT_TRAINING_FINAL.csv"
+  data_path: "data/processed/POLYBERT_TRAINING_FINAL.csv"
   train_split: 0.7
   val_split: 0.2
   test_split: 0.1

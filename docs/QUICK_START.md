@@ -16,7 +16,7 @@ pip install torch numpy pandas scikit-learn tqdm
 The simplest way to run the complete pipeline:
 
 ```bash
-cd /home/ubuntu/HYDRA-BERT-FINAL
+cd /path/to/HYDRA-BERT
 
 # Run for all 10 patients (16 GPUs, 96 CPUs)
 python scripts/pipeline/run_full_pipeline.py --all --gpus 16 --cpus 96

@@ -49,7 +49,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-BASE_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 FEBIO_RESULTS = BASE_DIR / "results" / "febio_simulations"
 OPENCARP_RESULTS = BASE_DIR / "results" / "opencarp_simulations"
 OUTPUT_DIR = BASE_DIR / "results" / "final_optimal_designs"

@@ -24,7 +24,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Output directory
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/3d_visualizations/advanced')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / '3d_visualizations' / 'advanced'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # High-quality settings
@@ -696,9 +696,7 @@ def create_animation_frames(mesh, n_frames=30):
 
 
 def main():
-    print("="*70)
     print("GENERATING ADVANCED 3D CARDIAC VISUALIZATIONS")
-    print("="*70)
 
     # Create mesh
     print("\n1. Creating anatomically accurate LV mesh...")
@@ -743,9 +741,7 @@ def main():
     print("\n6. Creating animation frames...")
     create_animation_frames(mesh_hydrogel, n_frames=24)
 
-    print("\n" + "="*70)
     print("ADVANCED VISUALIZATION COMPLETE")
-    print("="*70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("*.png")):

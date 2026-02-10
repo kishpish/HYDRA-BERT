@@ -47,8 +47,9 @@ try:
     )
 except ImportError:
     # Fallback if modules not importable
-    FEBIO_OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/febio_hydrogel_simulations")
-    OPENCARP_OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/opencarp_hydrogel_simulations")
+    _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+    FEBIO_OUTPUT_DIR = _PROJECT_ROOT / "results" / "febio_hydrogel_simulations"
+    OPENCARP_OUTPUT_DIR = _PROJECT_ROOT / "results" / "opencarp_hydrogel_simulations"
 
 # Configure logging
 logging.basicConfig(
@@ -62,12 +63,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # CONFIGURATION
-# =============================================================================
 
 # Output directories
-RESULTS_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/simulation_validation")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+RESULTS_DIR = PROJECT_ROOT / "results" / "simulation_validation"
 COMBINED_DIR = RESULTS_DIR / "combined"
 
 # Patient list
@@ -78,12 +78,10 @@ PATIENTS = [
 ]
 
 # Default therapeutic designs path
-DESIGNS_CSV = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/therapeutic_final/best_designs_summary.csv")
+DESIGNS_CSV = PROJECT_ROOT / "results" / "therapeutic_final" / "best_designs_summary.csv"
 
 
-# =============================================================================
 # COMBINED SIMULATION RUNNER
-# =============================================================================
 
 def get_design_params(row: pd.Series) -> Dict[str, Any]:
     """Extract design parameters from DataFrame row."""
@@ -240,9 +238,7 @@ def classify_therapeutic(metrics: Dict) -> bool:
     )
 
 
-# =============================================================================
 # PARALLEL EXECUTION
-# =============================================================================
 
 def run_all_simulations_parallel(
     designs_df: pd.DataFrame,
@@ -295,9 +291,7 @@ def run_all_simulations_parallel(
     return results
 
 
-# =============================================================================
 # RESULTS EXPORT
-# =============================================================================
 
 def export_results(results: List[Dict], output_dir: Path):
     """Export simulation results to various formats."""
@@ -423,9 +417,7 @@ All patients received **GelMA_BioIL** (conductive hydrogel) with:
         f.write(report)
 
 
-# =============================================================================
 # MAIN ENTRY POINT
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser(description="Run complete FEBio + OpenCarp simulations")
@@ -491,14 +483,11 @@ def main():
         summary_df = export_results(results, COMBINED_DIR)
 
         # Print summary
-        print(f"\n{'='*70}")
         print(f"HYDRA-BERT Simulation Validation Complete")
-        print(f"{'='*70}")
         print(f"Total patients: {len(results)}")
         print(f"Complete: {sum(1 for r in results if r.get('status') == 'COMPLETED')}")
         print(f"Therapeutic: {summary_df['is_therapeutic'].sum()}")
         print(f"\nResults saved to: {COMBINED_DIR}")
-        print(f"{'='*70}")
 
 
 if __name__ == "__main__":

@@ -39,18 +39,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ================================================================================
 # CONFIGURATION
-# ================================================================================
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 MESH_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 BASELINE_DIR = BASE_DIR / "febio_results"
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/hydrogel_febio_actual")
+OUTPUT_DIR = PROJECT_ROOT / "results" / "hydrogel_febio_actual"
 
-FEBIO_PATH = "/home/ubuntu/FEBio/bin/febio4"
-LD_LIBRARY_PATH = "/home/ubuntu/FEBio/lib"
+FEBIO_PATH = os.environ.get('FEBIO_BIN', 'febio4')
+LD_LIBRARY_PATH = os.environ.get('FEBIO_LIB_DIR', '')
 
 PATIENTS = [
     "SCD0000101", "SCD0000201", "SCD0000301", "SCD0000401",
@@ -69,9 +68,7 @@ OPTIMAL_HYDROGEL = {
 }
 
 
-# ================================================================================
 # MESH LOADING AND PROCESSING
-# ================================================================================
 
 def load_mesh(patient_id: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Load patient mesh (nodes, elements, element tags)."""
@@ -216,9 +213,7 @@ def find_base_nodes(nodes: np.ndarray) -> np.ndarray:
     return base_nodes
 
 
-# ================================================================================
 # FEBIO FILE GENERATION (CORRECT FORMAT)
-# ================================================================================
 
 def generate_febio_hydrogel(
     patient_id: str,
@@ -395,9 +390,7 @@ def generate_febio_hydrogel(
     return output_path
 
 
-# ================================================================================
 # SIMULATION EXECUTION
-# ================================================================================
 
 def run_febio_simulation(feb_path: Path, output_dir: Path) -> Dict:
     """Run FEBio simulation and return results."""
@@ -452,9 +445,7 @@ def run_febio_simulation(feb_path: Path, output_dir: Path) -> Dict:
     return result
 
 
-# ================================================================================
 # METRIC EXTRACTION FROM XPLT
-# ================================================================================
 
 def read_xplt_header(xplt_path: Path) -> Dict:
     """Read basic info from FEBio XPLT binary file."""
@@ -560,9 +551,7 @@ def extract_stress_from_xplt(xplt_path: Path, elements: np.ndarray, tags: np.nda
     return metrics
 
 
-# ================================================================================
 # MAIN PIPELINE
-# ================================================================================
 
 def run_patient_simulation(patient_id: str) -> Dict:
     """Run complete hydrogel simulation for one patient."""
@@ -687,9 +676,7 @@ def main():
             json.dump(summary, f, indent=2, default=str)
 
         # Print summary
-        print(f"\n{'='*60}")
         print("HYDRA-BERT Hydrogel FEBio Simulation Summary")
-        print(f"{'='*60}")
         print(f"Patients: {summary['n_patients']}")
         print(f"Therapeutic: {summary['n_therapeutic']}")
         print(f"Failed: {summary['n_failed']}")

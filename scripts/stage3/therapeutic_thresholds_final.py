@@ -24,9 +24,7 @@ class TherapeuticThresholdsProduction:
     - FEBio/OpenCarp simulation validation studies
     """
 
-    # =========================================================================
     # TIER 1: PRIMARY EFFICACY (All must pass for THERAPEUTIC classification)
-    # =========================================================================
 
     # Ejection Fraction Improvement
     MIN_DELTA_EF_PCT: float = 5.0        # Minimum clinically meaningful
@@ -43,17 +41,13 @@ class TherapeuticThresholdsProduction:
     TARGET_STRAIN_NORMALIZATION_PCT: float = 25.0
     EXCEPTIONAL_STRAIN_NORMALIZATION_PCT: float = 40.0
 
-    # =========================================================================
     # TIER 2: SECONDARY EFFICACY
-    # =========================================================================
 
     MIN_STROKE_VOLUME_IMPROVEMENT_PCT: float = 15.0
     MIN_GLS_IMPROVEMENT_PCT: float = 2.0
     MIN_ESV_REDUCTION_ML: float = 10.0
 
-    # =========================================================================
     # TIER 3: SAFETY (All must pass for THERAPEUTIC classification)
-    # =========================================================================
 
     # Toxicity (0.0 = no toxicity, 1.0 = highly toxic)
     # Updated to 0.13 based on material safety validation
@@ -65,17 +59,13 @@ class TherapeuticThresholdsProduction:
     MAX_FIBROSIS_RISK: float = 0.20
     MAX_COMPLIANCE_MISMATCH: float = 0.50
 
-    # =========================================================================
     # TIER 4: ELECTRICAL FUNCTION (From OpenCarp simulation)
-    # =========================================================================
 
     MIN_CV_IMPROVEMENT_PCT: float = 20.0
     MIN_ACTIVATION_TIME_REDUCTION_PCT: float = 15.0
     MIN_APD_DISPERSION_REDUCTION_PCT: float = 15.0
 
-    # =========================================================================
     # TIER 5: DURABILITY
-    # =========================================================================
 
     MIN_RETENTION_30DAYS: float = 0.50
     MIN_T50_DAYS: float = 30.0
@@ -112,9 +102,7 @@ def classify_design_final(design: Dict[str, Any],
         "tier5_durability": {"checks": {}, "pass_count": 0, "pass_all": False},
     }
 
-    # =========================================================================
     # TIER 1: PRIMARY EFFICACY
-    # =========================================================================
 
     # Delta EF (use simulation if available)
     delta_ef = design.get("func_delta_EF_pct", design.get("delta_EF_pct", 0))
@@ -167,9 +155,7 @@ def classify_design_final(design: Dict[str, Any],
     result["tier1_efficacy"]["pass_count"] = tier1_passed
     result["tier1_efficacy"]["pass_all"] = tier1_passed == 3
 
-    # =========================================================================
     # TIER 2: SECONDARY EFFICACY
-    # =========================================================================
 
     sv_imp = design.get("func_stroke_volume_improvement_pct",
                         design.get("stroke_volume_improvement_pct", 0))
@@ -199,9 +185,7 @@ def classify_design_final(design: Dict[str, Any],
     result["tier2_efficacy"]["pass_count"] = tier2_passed
     result["tier2_efficacy"]["pass_all"] = tier2_passed == 3
 
-    # =========================================================================
     # TIER 3: SAFETY
-    # =========================================================================
 
     toxicity = design.get("toxicity_score", 0)
     result["tier3_safety"]["checks"]["toxicity"] = {
@@ -243,9 +227,7 @@ def classify_design_final(design: Dict[str, Any],
     result["tier3_safety"]["pass_count"] = tier3_passed
     result["tier3_safety"]["pass_all"] = tier3_passed == 5
 
-    # =========================================================================
     # TIER 4: ELECTRICAL
-    # =========================================================================
 
     cv_imp = design.get("elec_cv_improvement_pct", design.get("cv_improvement_pct", 0))
     result["tier4_electrical"]["checks"]["cv_improvement"] = {
@@ -279,9 +261,7 @@ def classify_design_final(design: Dict[str, Any],
     result["tier4_electrical"]["pass_count"] = tier4_passed
     result["tier4_electrical"]["pass_all"] = tier4_passed == 4
 
-    # =========================================================================
     # TIER 5: DURABILITY
-    # =========================================================================
 
     retention = design.get("integ_retention_fraction",
                           design.get("retention_at_30days", 0))
@@ -302,9 +282,7 @@ def classify_design_final(design: Dict[str, Any],
     result["tier5_durability"]["pass_count"] = tier5_passed
     result["tier5_durability"]["pass_all"] = tier5_passed == 2
 
-    # =========================================================================
     # FINAL CLASSIFICATION
-    # =========================================================================
 
     tier1_all = result["tier1_efficacy"]["pass_all"]
     tier3_all = result["tier3_safety"]["pass_all"]
@@ -365,7 +343,6 @@ if __name__ == "__main__":
     # Print threshold summary
     t = TherapeuticThresholdsProduction()
     print("HYDRA-BERT Therapeutic Thresholds (Production)")
-    print("=" * 60)
     print(f"Delta EF: >= {t.MIN_DELTA_EF_PCT}% (target: {t.TARGET_DELTA_EF_PCT}%)")
     print(f"Wall Stress Reduction: >= {t.MIN_WALL_STRESS_REDUCTION_PCT}%")
     print(f"Strain Normalization: >= {t.MIN_STRAIN_NORMALIZATION_PCT}%")

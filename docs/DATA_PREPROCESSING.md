@@ -69,7 +69,7 @@ This document details the complete data preprocessing pipeline for HYDRA-BERT, f
 ### 1.2 File Locations
 
 ```
-/home/ubuntu/HYDRA-BERT-FINAL/data/
+data/
 ├── raw/
 │   ├── polymer_library_565.csv          # Initial 565 polymers
 │   ├── curated_polymers_24.csv          # Final 24 polymers
@@ -1103,7 +1103,7 @@ File Size: 127 MB (uncompressed CSV)
 ### 10.3 Output Files
 
 ```
-/home/ubuntu/HYDRA-BERT-FINAL/data/processed/
+data/processed/
 ├── POLYBERT_TRAINING_FINAL.csv   # Complete dataset (447,480 samples)
 ├── train_split.csv               # Training set (313,236 samples)
 ├── val_split.csv                 # Validation set (89,496 samples)

@@ -36,15 +36,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # CONFIGURATION
-# =============================================================================
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 FEBIO_RESULTS = BASE_DIR / "febio_results"
 OPENCARP_RESULTS = BASE_DIR / "opencarp_results"
 
-HYDRA_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
+HYDRA_DIR = PROJECT_ROOT
 DESIGNS_CSV = HYDRA_DIR / "results/therapeutic_final/best_designs_summary.csv"
 OUTPUT_DIR = HYDRA_DIR / "results/simulation_validation"
 
@@ -55,9 +54,7 @@ PATIENTS = [
 ]
 
 
-# =============================================================================
 # DATA CLASSES
-# =============================================================================
 
 @dataclass
 class BaselineMetrics:
@@ -87,9 +84,7 @@ class HydrogelParams:
     coverage: str = "scar_bz100"
 
 
-# =============================================================================
 # BASELINE DATA LOADING
-# =============================================================================
 
 def load_febio_baseline(patient_id: str) -> Optional[Dict]:
     """Load FEBio baseline mechanics metrics."""
@@ -131,9 +126,7 @@ def load_all_baselines() -> Dict[str, Dict]:
     return baselines
 
 
-# =============================================================================
 # HYDROGEL TREATMENT EFFECT MODELS
-# =============================================================================
 
 def compute_ef_improvement(
     baseline: BaselineMetrics,
@@ -296,9 +289,7 @@ def compute_arrhythmia_risk(
     return max(0.05, min(0.15, final_risk))
 
 
-# =============================================================================
 # VALIDATION WORKFLOW
-# =============================================================================
 
 def validate_patient(
     patient_id: str,
@@ -521,9 +512,7 @@ def generate_validation_report(results: List[Dict], output_dir: Path):
     return summary_df
 
 
-# =============================================================================
 # MAIN
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser(description="Validate therapeutic designs with simulation baselines")
@@ -537,14 +526,11 @@ def main():
     summary_df = generate_validation_report(results, output_dir)
 
     # Print summary
-    print("\n" + "="*70)
     print("VALIDATION COMPLETE")
-    print("="*70)
     n_therapeutic = sum(1 for r in results if r["validation"].get("is_therapeutic", False))
     print(f"Patients: {len(results)}")
     print(f"THERAPEUTIC: {n_therapeutic} ({n_therapeutic/len(results)*100:.0f}%)")
     print(f"\nResults saved to: {output_dir}")
-    print("="*70)
 
 
 if __name__ == "__main__":

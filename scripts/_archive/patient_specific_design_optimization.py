@@ -37,16 +37,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ================================================================================
 # PATHS
-# ================================================================================
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 BASELINE_DIR = BASE_DIR / "febio_results"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 
-DESIGNS_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/therapeutic_final/patient_results")
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/patient_specific_optimization")
+DESIGNS_DIR = PROJECT_ROOT / "results" / "therapeutic_final" / "patient_results"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "patient_specific_optimization"
 
 PATIENTS = [
     "SCD0000101", "SCD0000201", "SCD0000301", "SCD0000401",
@@ -64,9 +63,7 @@ TISSUE_PROPERTIES = {
 }
 
 
-# ================================================================================
 # DATA LOADING
-# ================================================================================
 
 def load_patient_designs(patient_id: str) -> pd.DataFrame:
     """Load all candidate designs for a patient."""
@@ -121,9 +118,7 @@ def load_infarct_data(patient_id: str) -> Dict:
     }
 
 
-# ================================================================================
 # TREATMENT EFFECT SIMULATION
-# ================================================================================
 
 def simulate_design_treatment(
     design: Dict,
@@ -161,9 +156,7 @@ def simulate_design_treatment(
     else:  # scar_bz100
         coverage_frac = scar_frac + bz_frac
 
-    # ========================================
     # STRESS REDUCTION MODEL
-    # ========================================
     native_E = TISSUE_PROPERTIES["healthy_E_kPa"]
 
     # Stiffness matching (optimal at 10-15 kPa)
@@ -187,9 +180,7 @@ def simulate_design_treatment(
     stress_reduction_pct = base_stress_reduction * stiffness_match * thickness_factor * coverage_factor * burden_factor * 100
     stress_reduction_pct = np.clip(stress_reduction_pct, 20.0, 65.0)
 
-    # ========================================
     # EF IMPROVEMENT MODEL
-    # ========================================
     max_ef = 55.0
     ef_headroom = max_ef - baseline_ef
 
@@ -209,9 +200,7 @@ def simulate_design_treatment(
     ef_improvement = (stress_contribution + bz_salvage) * degradation_factor * scar_constraint
     ef_improvement = np.clip(ef_improvement, 2.0, min(ef_headroom, 18.0))
 
-    # ========================================
     # STRAIN NORMALIZATION MODEL
-    # ========================================
     normal_gls = -20.0
     impairment = abs(normal_gls) - abs(baseline_gls)
 
@@ -219,9 +208,7 @@ def simulate_design_treatment(
     strain_norm_pct = recovery_fraction * 100 * coverage_factor
     strain_norm_pct = np.clip(strain_norm_pct, 15.0, 70.0)
 
-    # ========================================
     # CONDUCTION VELOCITY IMPROVEMENT
-    # ========================================
     # Conductivity effect (0.5 S/m is optimal for ionic liquid hydrogels)
     conductivity_factor = min(conductivity / 0.5, 1.2) ** 0.8
 
@@ -229,16 +216,12 @@ def simulate_design_treatment(
     cv_improvement_pct = improvement_potential * conductivity_factor
     cv_improvement_pct = np.clip(cv_improvement_pct, 8.0, 45.0)
 
-    # ========================================
     # ARRHYTHMIA RISK REDUCTION
-    # ========================================
     # Conductive hydrogels reduce reentry circuits
     arrhythmia_reduction = cv_improvement_pct * 0.6
     arrhythmia_reduction = np.clip(arrhythmia_reduction, 5.0, 35.0)
 
-    # ========================================
     # COMPOSITE THERAPEUTIC SCORE
-    # ========================================
     # Weighted composite (EF most important, then stress, then electrical)
     therapeutic_score = (
         ef_improvement * 3.0 +              # EF weight: 3
@@ -270,9 +253,7 @@ def simulate_design_treatment(
     }
 
 
-# ================================================================================
 # OPTIMIZATION
-# ================================================================================
 
 def optimize_patient_designs(patient_id: str) -> Dict:
     """
@@ -430,9 +411,7 @@ def main():
             f.write(report)
 
         # Print summary
-        print(f"\n{'='*70}")
         print("HYDRA-BERT Patient-Specific Design Optimization")
-        print(f"{'='*70}")
         print(f"Patients: {len(all_results)}")
         print(f"Total designs evaluated: {sum(r.get('n_designs_evaluated', 0) for r in all_results)}")
         print(f"\nBest Design per Patient:")

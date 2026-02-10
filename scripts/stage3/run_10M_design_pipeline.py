@@ -79,9 +79,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # DEFAULT CONFIGURATION
-# =============================================================================
 
 DEFAULT_CONFIG = {
     # Design generation
@@ -107,9 +105,7 @@ DEFAULT_CONFIG = {
 }
 
 
-# =============================================================================
 # PARETO OPTIMIZATION METRICS
-# =============================================================================
 
 PARETO_METRICS = [
     # Primary efficacy (higher is better)
@@ -249,17 +245,13 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
 
         start_time = datetime.now()
 
-        # =================================================================
         # STAGE 1: Generate 10M designs
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 1 - Generating designs...")
 
         designs = generator.generate_designs(patient_config, use_ppo=True)
         logger.info(f"GPU {gpu_id}: [{patient_id}] Generated {len(designs):,} designs")
 
-        # =================================================================
         # STAGE 2: Score with HYDRA-BERT and filter
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 2 - Scoring with HYDRA-BERT...")
 
         designs = generator.score_designs_batch(designs, patient_config)
@@ -291,9 +283,7 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-        # =================================================================
         # STAGE 3: Calculate 53 simulation metrics for top 1,000
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 3 - Calculating 53 metrics...")
 
         top_1k = top_10k[:config["TOP_K_STAGE2"]]
@@ -336,9 +326,7 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
         logger.info(f"GPU {gpu_id}: [{patient_id}] Calculated metrics for "
                    f"{len(designs_with_metrics)} designs")
 
-        # =================================================================
         # STAGE 4: Apply therapeutic thresholds
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 4 - Therapeutic classification...")
 
         therapeutic_designs = []
@@ -358,9 +346,7 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
         logger.info(f"GPU {gpu_id}: [{patient_id}] Found {len(therapeutic_designs)} "
                    f"THERAPEUTIC, {len(supportive_designs)} SUPPORTIVE")
 
-        # =================================================================
         # STAGE 5: Pareto-optimal selection
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 5 - Pareto optimization...")
 
         if len(therapeutic_designs) >= 5:
@@ -378,9 +364,7 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
         logger.info(f"GPU {gpu_id}: [{patient_id}] Found {len(pareto_optimal)} "
                    "Pareto-optimal designs")
 
-        # =================================================================
         # STAGE 6: Final selection and ranking
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Stage 6 - Final selection...")
 
         pareto_optimal.sort(
@@ -393,9 +377,7 @@ def process_patient_on_gpu(args: Tuple) -> Dict[str, Any]:
         for i, design in enumerate(final_designs):
             design["final_rank"] = i + 1
 
-        # =================================================================
         # Save results
-        # =================================================================
         logger.info(f"GPU {gpu_id}: [{patient_id}] Saving results...")
 
         # Save therapeutic designs
@@ -543,16 +525,13 @@ def main():
     from hydra_bert_v2.stage3 import REAL_PATIENTS
 
     # Print configuration
-    print("=" * 80)
     print("HYDRA-BERT 10M DESIGN GENERATION PIPELINE")
-    print("=" * 80)
     print(f"Designs per patient: {config['DESIGNS_PER_PATIENT']:,}")
     print(f"Total designs: {config['DESIGNS_PER_PATIENT'] * len(REAL_PATIENTS):,}")
     print(f"GPUs: {config['NUM_GPUS']}")
     print(f"Patients: {len(REAL_PATIENTS)}")
     print(f"Checkpoint: {config['CHECKPOINT_PATH']}")
     print(f"Output: {config['OUTPUT_DIR']}")
-    print("=" * 80)
 
     # Create output directory
     Path(config["OUTPUT_DIR"]).mkdir(parents=True, exist_ok=True)
@@ -598,9 +577,7 @@ def main():
     # Print summary
     total_time = datetime.now() - start_time
 
-    print("\n" + "=" * 80)
-    print("PIPELINE COMPLETE")
-    print("=" * 80)
+    print("\nPIPELINE COMPLETE")
     print(f"Total time: {total_time}")
     print(f"Patients processed: "
           f"{sum(1 for r in results if r.get('status') == 'success')}/{len(REAL_PATIENTS)}")

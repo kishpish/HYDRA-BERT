@@ -19,7 +19,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 from pathlib import Path
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/3d_visualizations')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / '3d_visualizations'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
@@ -869,9 +869,7 @@ def create_comprehensive_comparison_figure():
 
 
 def main():
-    print("="*70)
     print("GENERATING DETAILED SIMULATION FIGURES")
-    print("="*70)
 
     print("\n1. Creating FEBio deformation field figure...")
     create_febio_deformation_figure()
@@ -888,9 +886,7 @@ def main():
     print("\n5. Creating comprehensive comparison figure...")
     create_comprehensive_comparison_figure()
 
-    print("\n" + "="*70)
     print("DETAILED SIMULATION FIGURES COMPLETE")
-    print("="*70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("*.png")):

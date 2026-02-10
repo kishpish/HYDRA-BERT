@@ -37,19 +37,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# ================================================================================
 # CONFIGURATION
-# ================================================================================
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 MESH_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 LON_DIR = BASE_DIR / "laplace_complete_v2"
 BASELINE_DIR = BASE_DIR / "febio_results"
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/hydrogel_febio_actual")
+OUTPUT_DIR = PROJECT_ROOT / "results" / "hydrogel_febio_actual"
 
-FEBIO_PATH = "/home/ubuntu/FEBio/bin/febio4"
-LD_LIBRARY_PATH = "/home/ubuntu/FEBio/lib"
+FEBIO_PATH = os.environ.get('FEBIO_BIN', 'febio4')
+LD_LIBRARY_PATH = os.environ.get('FEBIO_LIB_DIR', '')
 
 PATIENTS = [
     "SCD0000101", "SCD0000201", "SCD0000301", "SCD0000401",
@@ -74,9 +73,7 @@ MATERIAL_PARAMS = {
 }
 
 
-# ================================================================================
 # MESH LOADING
-# ================================================================================
 
 def load_mesh(patient_id: str) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Load patient mesh (nodes, elements, element tags)."""
@@ -176,9 +173,7 @@ def identify_patch_region(nodes: np.ndarray, elements: np.ndarray, tags: np.ndar
     return patch_elems.astype(int)
 
 
-# ================================================================================
 # FEBIO FILE GENERATION
-# ================================================================================
 
 def get_hydrogel_material_params(stiffness_kPa: float) -> Dict:
     """
@@ -348,9 +343,7 @@ def generate_febio_with_hydrogel(
     return output_path
 
 
-# ================================================================================
 # SIMULATION AND METRIC EXTRACTION
-# ================================================================================
 
 def run_febio(feb_path: Path, output_dir: Path) -> Dict:
     """Run FEBio simulation."""
@@ -441,9 +434,7 @@ def extract_metrics(xplt_path: Path, baseline_metrics: Dict, patch_elements: np.
     return metrics
 
 
-# ================================================================================
 # MAIN PIPELINE
-# ================================================================================
 
 def run_patient_hydrogel_simulation(patient_id: str) -> Dict:
     """Run complete hydrogel simulation for one patient."""
@@ -544,9 +535,7 @@ def main():
 
         # Print summary
         n_success = sum(1 for r in results if r.get("status") == "COMPLETED")
-        print(f"\n{'='*60}")
         print(f"Optimal Hydrogel FEBio Simulation Summary")
-        print(f"{'='*60}")
         print(f"Patients: {len(results)}")
         print(f"Successful: {n_success}")
         print(f"Hydrogel: E={OPTIMAL_HYDROGEL['stiffness_kPa']}kPa, T={OPTIMAL_HYDROGEL['thickness_mm']}mm")
