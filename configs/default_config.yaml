@@ -1,0 +1,54 @@
+# Cardiac Hydrogel Optimizer - Default Configuration
+
+# Optimization settings
+optimization:
+  designs_per_patient: 1000000      # Number of designs to evaluate per patient
+  batch_size: 50000                  # Batch size for parallel processing
+  n_workers: null                    # Auto-detect CPU cores if null
+
+# Simulation parameters
+simulation:
+  # FEBio mechanics
+  cardiac_cycle_ms: 800              # 75 bpm
+  LV_end_diastolic_pressure_kPa: 1.33
+  LV_end_systolic_pressure_kPa: 16.0
+  
+  # OpenCARP electrophysiology
+  tend_ms: 400
+  dt_ms: 10
+  ionic_model: tenTusscherPanfilov
+
+# Hydrogel parameter ranges
+hydrogel:
+  stiffness_kPa:
+    min: 1.0
+    max: 100.0
+  conductivity_S_m:
+    min: 0.01
+    max: 1000.0
+  degradation_t50_days:
+    min: 3.0
+    max: 365.0
+  thickness_mm:
+    min: 0.5
+    max: 3.0
+
+# Coverage options
+coverage_options:
+  - scar_only
+  - scar_bz25
+  - scar_bz50
+  - scar_bz100
+
+# Therapeutic thresholds
+thresholds:
+  LVEF_improvement_min_pct: 3.0
+  stress_reduction_min_pct: 25.0
+  CV_improvement_min_pct: 50.0
+  safety_score_min: 80.0
+
+# Output settings
+output:
+  save_all_results: false            # Only save optimal per patient
+  save_top_n: 10                     # Save top N designs per patient
+  format: csv                        # csv, json, or both
