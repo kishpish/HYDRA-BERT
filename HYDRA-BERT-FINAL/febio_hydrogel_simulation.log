@@ -1,7 +1,0 @@
-2026-02-09 20:54:27,296 | INFO | Loaded 10 therapeutic designs
-2026-02-09 20:54:27,301 | INFO | Starting FEBio simulation for SCD0000101
-2026-02-09 20:54:28,436 | INFO |   Loaded mesh: 70518 nodes, 383439 elements
-2026-02-09 20:54:28,442 | INFO |   Applied hydrogel to 120554 elements (31.4%)
-2026-02-09 20:54:36,903 | INFO |   Generated FEBio file: SCD0000101_hydrogel.feb
-2026-02-09 20:54:36,904 | INFO | Running FEBio: SCD0000101_hydrogel.feb
-2026-02-09 20:54:36,929 | ERROR | FEBio failed for SCD0000101_hydrogel.feb: Unknown error
