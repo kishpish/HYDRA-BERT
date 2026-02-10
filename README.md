@@ -216,8 +216,7 @@ cat results/final_optimal_designs/SCD0000101/optimal_design.csv
 
 ```bibtex
 @software{hydra_bert_2026,
-  title={HYDRA-BERT: Patient-Specific Cardiac Hydrogel Design Optimization},
-  author={HYDRA-BERT Team},
+  author={Krishiv Potluri},
   year={2026},
   url={https://github.com/your-org/HYDRA-BERT}
 }
