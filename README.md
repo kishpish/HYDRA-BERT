@@ -24,25 +24,25 @@ A comprehensive deep learning pipeline for patient-specific injectable hydrogel 
 │                    HYDRA-BERT DESIGN OPTIMIZATION PIPELINE                  │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  STEP 1: DESIGN GENERATION (10M per patient, GPU-accelerated)              │
-│  ├─ Sample from 24 polymer types × continuous parameter space              │
-│  ├─ Evaluate using HYDRA-BERT neural network predictions                   │
-│  └─ Output: Top 100 designs ranked by predicted therapeutic score          │
+│  STEP 1: DESIGN GENERATION (10M per patient, GPU-accelerated)               │
+│  ├─ Sample from 24 polymer types × continuous parameter space               │
+│  ├─ Evaluate using HYDRA-BERT neural network predictions                    │
+│  └─ Output: Top 100 designs ranked by predicted therapeutic score           │
 │                                                                             │
-│  STEP 2: FEBio MECHANICAL SIMULATION (CPU-parallel)                        │
-│  ├─ Run finite element simulations for each top 100 design                 │
-│  ├─ Place hydrogel in patient-specific infarct zone                        │
-│  └─ Extract: Wall stress, strain, LVEF                                     │
+│  STEP 2: FEBio MECHANICAL SIMULATION (CPU-parallel)                         │
+│  ├─ Run finite element simulations for each top 100 design                  │
+│  ├─ Place hydrogel in patient-specific infarct zone                         │
+│  └─ Extract: Wall stress, strain, LVEF                                      │
 │                                                                             │
-│  STEP 3: OpenCarp EP SIMULATION (CPU-parallel)                             │
-│  ├─ Run electrophysiology simulations for each design                      │
-│  ├─ Apply conductive hydrogel properties                                   │
-│  └─ Extract: Conduction velocity, APD, arrhythmia risk                     │
+│  STEP 3: OpenCarp EP SIMULATION (CPU-parallel)                              │
+│  ├─ Run electrophysiology simulations for each design                       │
+│  ├─ Apply conductive hydrogel properties                                    │
+│  └─ Extract: Conduction velocity, APD, arrhythmia risk                      │
 │                                                                             │
 │  STEP 4: OPTIMAL SELECTION                                                  │
-│  ├─ Combine FEBio + OpenCarp metrics                                       │
-│  ├─ Rank by combined therapeutic score                                     │
-│  └─ Output: Single BEST design per patient                                 │
+│  ├─ Combine FEBio + OpenCarp metrics                                        │
+│  ├─ Rank by combined therapeutic score                                      │
+│  └─ Output: Single BEST design per patient                                  │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
