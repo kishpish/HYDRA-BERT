@@ -25,9 +25,7 @@ class TherapeuticThresholds:
     considered therapeutically effective.
     """
 
-    # =========================================================================
     # TIER 1: PRIMARY EFFICACY (Must pass ALL for "Therapeutic")
-    # =========================================================================
 
     # Ejection Fraction Improvement
     # FDA considers ≥5% absolute improvement clinically meaningful
@@ -47,9 +45,7 @@ class TherapeuticThresholds:
     TARGET_STRAIN_NORMALIZATION_PCT: float = 25.0
     EXCEPTIONAL_STRAIN_NORMALIZATION_PCT: float = 40.0
 
-    # =========================================================================
-    # TIER 2: SECONDARY EFFICACY (Must pass ≥3 for "Supportive")
-    # =========================================================================
+    # TIER 2: SECONDARY EFFICACY (Must pass >=3 for "Supportive")
 
     # Global Longitudinal Strain (GLS) Improvement
     # ≥2% absolute improvement is clinically relevant
@@ -74,9 +70,7 @@ class TherapeuticThresholds:
     # ≥15% increase in cardiac output efficiency
     MIN_STROKE_WORK_INCREASE_PCT: float = 15.0
 
-    # =========================================================================
     # TIER 3: SAFETY REQUIREMENTS (Must pass ALL)
-    # =========================================================================
 
     # Toxicity (0-1, lower is better)
     MAX_TOXICITY_SCORE: float = 0.10
@@ -97,9 +91,7 @@ class TherapeuticThresholds:
     # Hydrogel stiffness should be within 50% of native tissue
     MAX_COMPLIANCE_MISMATCH: float = 0.50
 
-    # =========================================================================
     # TIER 4: ELECTRICAL FUNCTION (For conductive hydrogels)
-    # =========================================================================
 
     # Conduction Velocity Improvement
     # ≥20% improvement in border zone CV
@@ -118,9 +110,7 @@ class TherapeuticThresholds:
     # Block risk should be <5%
     MAX_CONDUCTION_BLOCK_RISK: float = 0.05
 
-    # =========================================================================
     # TIER 5: DURABILITY (Long-term benefit)
-    # =========================================================================
 
     # 30-day Retention
     # ≥60% of hydrogel should remain at 30 days
@@ -133,9 +123,7 @@ class TherapeuticThresholds:
     TARGET_T50_DAYS: float = 90.0
 
 
-# =============================================================================
 # THERAPEUTIC CLASSIFICATION
-# =============================================================================
 
 class TherapeuticClassifier:
     """Classifies designs based on therapeutic thresholds."""
@@ -412,9 +400,7 @@ class TherapeuticClassifier:
         return min(100, score)
 
 
-# =============================================================================
 # KEY FILTERING METRICS (10 metrics for Stage 1 filtering)
-# =============================================================================
 
 KEY_FILTERING_METRICS = [
     # Efficacy (5 metrics)

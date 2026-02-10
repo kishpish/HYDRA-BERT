@@ -37,8 +37,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-FEBIO_RESULTS = Path("/home/ubuntu/SCD_MODELS/febio_results")
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/extracted_metrics")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+FEBIO_RESULTS = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "febio_results"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "extracted_metrics"
 
 
 class XPLTReader:

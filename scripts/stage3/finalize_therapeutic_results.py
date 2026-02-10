@@ -389,14 +389,13 @@ def generate_final_report(results: Dict[str, Any], output_path: str) -> None:
 def main():
     """Main entry point."""
 
-    print("=" * 80)
     print("HYDRA-BERT FINAL THERAPEUTIC RESULTS GENERATOR")
-    print("=" * 80)
     print()
 
     # Configuration
-    input_dir = "/home/ubuntu/HYDRA-BERT-GITHUB/results/therapeutic"
-    output_dir = "/home/ubuntu/HYDRA-BERT-GITHUB/results/therapeutic_final"
+    _project_root = Path(__file__).resolve().parent.parent.parent
+    input_dir = str(_project_root / 'results' / 'therapeutic')
+    output_dir = str(_project_root / 'results' / 'therapeutic_final')
 
     # Load results
     print("Loading patient results...")
@@ -430,15 +429,12 @@ def main():
     generate_final_report(results, str(report_path))
 
     print()
-    print("=" * 80)
     print("FINAL RESULTS SUMMARY")
-    print("=" * 80)
     summary = results["summary"]
     print(f"Total Patients: {summary['total_patients']}")
     print(f"Patients with THERAPEUTIC: {summary['therapeutic_patients']}")
     print(f"Total THERAPEUTIC designs: {summary['total_therapeutic_designs']}")
     print(f"Success Rate: {100*summary['therapeutic_patients']/summary['total_patients']:.0f}%")
-    print("=" * 80)
 
 
 if __name__ == "__main__":

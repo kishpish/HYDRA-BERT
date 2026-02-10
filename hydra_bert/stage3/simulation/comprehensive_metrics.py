@@ -28,9 +28,7 @@ class FEBioMechanicalMetrics:
     20 metrics covering stress, strain, and material behavior.
     """
 
-    # ==========================================================================
     # STRESS METRICS (8)
-    # ==========================================================================
 
     # Wall stress
     peak_wall_stress_kPa: float = 0.0           # Maximum wall stress
@@ -46,9 +44,7 @@ class FEBioMechanicalMetrics:
     # Interface stress
     interface_stress_kPa: float = 0.0            # Hydrogel-tissue interface stress
 
-    # ==========================================================================
     # STRAIN METRICS (7)
-    # ==========================================================================
 
     # Principal strains
     max_principal_strain: float = 0.0            # E1 (circumferential)
@@ -63,9 +59,7 @@ class FEBioMechanicalMetrics:
     # Strain normalization
     strain_normalization_pct: float = 0.0        # Improvement toward normal
 
-    # ==========================================================================
     # DEFORMATION METRICS (5)
-    # ==========================================================================
 
     # Wall motion
     wall_thickening_pct: float = 0.0             # Systolic wall thickening
@@ -87,9 +81,7 @@ class OpenCarpElectricalMetrics:
     15 metrics covering conduction, activation, and repolarization.
     """
 
-    # ==========================================================================
     # CONDUCTION VELOCITY (4)
-    # ==========================================================================
 
     # Regional CV
     scar_cv_m_s: float = 0.0                     # CV in scar (typically 0)
@@ -97,9 +89,7 @@ class OpenCarpElectricalMetrics:
     remote_cv_m_s: float = 0.0                   # CV in remote tissue
     cv_improvement_pct: float = 0.0              # BZ CV improvement
 
-    # ==========================================================================
     # ACTIVATION METRICS (5)
-    # ==========================================================================
 
     # Activation times
     total_activation_time_ms: float = 0.0        # QRS-like duration
@@ -110,9 +100,7 @@ class OpenCarpElectricalMetrics:
     activation_heterogeneity: float = 0.0        # Variance in activation
     conduction_block_present: bool = False       # Presence of block
 
-    # ==========================================================================
     # REPOLARIZATION METRICS (4)
-    # ==========================================================================
 
     # APD (Action Potential Duration)
     mean_apd_ms: float = 0.0                     # Average APD
@@ -122,9 +110,7 @@ class OpenCarpElectricalMetrics:
     # Repolarization gradient
     repolarization_gradient: float = 0.0         # Spatial gradient
 
-    # ==========================================================================
     # ARRHYTHMIA RISK (2)
-    # ==========================================================================
 
     arrhythmia_vulnerability_index: float = 0.0  # Composite risk score
     reentry_circuit_probability: float = 0.0     # Probability of reentry
@@ -143,9 +129,7 @@ class FunctionalMetrics:
     10 metrics covering pump function and hemodynamics.
     """
 
-    # ==========================================================================
     # PUMP FUNCTION (5)
-    # ==========================================================================
 
     # Ejection fraction
     baseline_LVEF_pct: float = 0.0
@@ -156,17 +140,13 @@ class FunctionalMetrics:
     stroke_volume_mL: float = 0.0
     stroke_volume_improvement_pct: float = 0.0
 
-    # ==========================================================================
     # VOLUMES (3)
-    # ==========================================================================
 
     end_diastolic_volume_mL: float = 0.0
     end_systolic_volume_mL: float = 0.0
     delta_ESV_mL: float = 0.0                    # Negative = improvement
 
-    # ==========================================================================
     # GLOBAL STRAIN (2)
-    # ==========================================================================
 
     baseline_GLS_pct: float = 0.0
     new_GLS_pct: float = 0.0
@@ -182,9 +162,7 @@ class IntegrationMetrics:
     8 metrics covering material interaction and stability.
     """
 
-    # ==========================================================================
     # MECHANICAL INTEGRATION (4)
-    # ==========================================================================
 
     # Stiffness matching
     tissue_stiffness_kPa: float = 0.0
@@ -194,9 +172,7 @@ class IntegrationMetrics:
     # Interface
     interface_shear_stress_kPa: float = 0.0
 
-    # ==========================================================================
     # COVERAGE AND RETENTION (4)
-    # ==========================================================================
 
     # Coverage
     scar_coverage_pct: float = 0.0

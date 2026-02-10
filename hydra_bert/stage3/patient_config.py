@@ -402,9 +402,7 @@ def get_patient_ids() -> List[str]:
 
 if __name__ == "__main__":
     # Print summary of all patients
-    print("=" * 70)
     print("HYDRA-BERT Real Patient Configurations")
-    print("=" * 70)
 
     for pid, config in REAL_PATIENTS.items():
         print(f"\n{pid}:")

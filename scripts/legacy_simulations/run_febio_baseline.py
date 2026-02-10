@@ -19,9 +19,7 @@ from typing import Dict, List, Tuple, Optional
 from scipy.spatial import KDTree
 
 
-# =============================================================================
 # Module 1: Configuration
-# =============================================================================
 
 PATIENTS = [
     "SCD0000101", "SCD0000201", "SCD0000301", "SCD0000401",
@@ -29,10 +27,10 @@ PATIENTS = [
     "SCD0001101", "SCD0001201"
 ]
 
-FEBIO_PATH = "/home/ubuntu/FEBio/bin/febio4"
-LD_LIBRARY_PATH = "/home/ubuntu/FEBio/lib"
+FEBIO_PATH = os.environ.get('FEBIO_BIN', 'febio4')
+LD_LIBRARY_PATH = os.environ.get('FEBIO_LIB_DIR', '')
 
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 PTS_DIR = BASE_DIR / "simulation_ready"
 ELEM_DIR = BASE_DIR / "infarct_results_comprehensive"
 LON_DIR = BASE_DIR / "laplace_complete_v2"
@@ -59,9 +57,7 @@ STEP_SIZE = 0.05
 TAG_NAMES = {1: "healthy", 2: "border_zone", 3: "infarct_scar"}
 
 
-# =============================================================================
 # Module 2: MeshLoader Class
-# =============================================================================
 
 class MeshLoader:
     """Loads and parses mesh files (pts, elem, lon)."""
@@ -146,9 +142,7 @@ class MeshLoader:
         return self.nodes, self.elements, self.element_tags, self.fibers
 
 
-# =============================================================================
 # Module 3: SurfaceExtractor Class
-# =============================================================================
 
 class SurfaceExtractor:
     """Extracts boundary surfaces and identifies endocardium/epicardium."""
@@ -251,9 +245,7 @@ class SurfaceExtractor:
         return epi_nodes
 
 
-# =============================================================================
 # Module 4: FEBGenerator Class
-# =============================================================================
 
 class FEBGenerator:
     """Generates FEBio 4.0 XML files."""
@@ -475,9 +467,7 @@ class FEBGenerator:
         f.write('  </Output>\n')
 
 
-# =============================================================================
 # Module 5: SimulationRunner Class
-# =============================================================================
 
 class SimulationRunner:
     """Runs FEBio simulations."""
@@ -535,9 +525,7 @@ class SimulationRunner:
         return success, steps, elapsed_str
 
 
-# =============================================================================
 # Module 6: MetricsCalculator Class
-# =============================================================================
 
 class MetricsCalculator:
     """Calculates biomechanical metrics from mesh data."""
@@ -702,9 +690,7 @@ class MetricsCalculator:
         return metrics
 
 
-# =============================================================================
 # Module 7: BatchProcessor
-# =============================================================================
 
 class BatchProcessor:
     """Processes multiple patient simulations."""
@@ -865,9 +851,7 @@ class BatchProcessor:
         return batch_result
 
 
-# =============================================================================
 # Main Entry Point
-# =============================================================================
 
 def main():
     """Main entry point."""

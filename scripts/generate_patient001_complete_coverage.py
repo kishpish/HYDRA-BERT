@@ -11,9 +11,10 @@ from matplotlib.colors import Normalize
 from matplotlib.patches import Patch
 from matplotlib.animation import FuncAnimation, PillowWriter
 from pathlib import Path
+import os
 import meshio
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/patient_specific')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / 'patient_specific'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
@@ -26,7 +27,8 @@ plt.rcParams.update({
 
 def load_mesh_and_classify():
     """Load mesh and get complete tissue classification."""
-    mesh = meshio.read('/home/ubuntu/SCD_MODELS/laplace_complete_v2/SCD0000101/SCD0000101_analysis.vtk')
+    _scd_models_dir = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
+    mesh = meshio.read(str(_scd_models_dir / 'laplace_complete_v2' / 'SCD0000101' / 'SCD0000101_analysis.vtk'))
 
     tissue_type_cells = mesh.cell_data['TissueType'][0].flatten()
     cells = mesh.cells[0].data
@@ -286,9 +288,7 @@ def create_rotation_animation(points, tissue_type, hydrogel_points,
 
 
 def main():
-    print("=" * 70)
     print("PATIENT SCD0000101 - COMPLETE HYDROGEL COVERAGE")
-    print("=" * 70)
 
     print("\n1. Loading mesh with tissue classification...")
     points, tissue_type, point_in_infarct, point_in_border = load_mesh_and_classify()
@@ -314,9 +314,7 @@ def main():
     create_rotation_animation(points, tissue_type, hydrogel_points,
                                n_frames=36, filename='patient001_complete_rotation.gif')
 
-    print("\n" + "=" * 70)
     print("COMPLETE")
-    print("=" * 70)
 
 
 if __name__ == "__main__":

@@ -41,7 +41,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-BASE_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SCRIPTS_DIR = BASE_DIR / "scripts" / "pipeline"
 
 # Pipeline steps

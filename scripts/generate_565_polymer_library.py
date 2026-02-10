@@ -7,6 +7,7 @@ This documents the curation process from 565 candidates to 24 final polymers.
 import pandas as pd
 import numpy as np
 import os
+from pathlib import Path
 
 # Set random seed for reproducibility
 np.random.seed(42)
@@ -204,7 +205,7 @@ print(f"\nFilter stage distribution:")
 print(df['filter_stage_passed'].value_counts().sort_index())
 
 # Save
-output_dir = '/home/ubuntu/HYDRA-BERT-FINAL/data/supplementary'
-os.makedirs(output_dir, exist_ok=True)
-df.to_csv(f'{output_dir}/initial_polymer_library_565.csv', index=False)
-print(f"\nSaved to {output_dir}/initial_polymer_library_565.csv")
+output_dir = Path(__file__).resolve().parent.parent / 'data' / 'supplementary'
+output_dir.mkdir(parents=True, exist_ok=True)
+df.to_csv(output_dir / 'initial_polymer_library_565.csv', index=False)
+print(f"\nSaved to {output_dir / 'initial_polymer_library_565.csv'}")

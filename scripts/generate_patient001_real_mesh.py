@@ -18,7 +18,7 @@ from pathlib import Path
 
 import meshio
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/patient_specific')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / 'patient_specific'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Patient 001 data
@@ -40,9 +40,10 @@ PATIENT_001_DATA = {
     'transmurality_mean': 0.515,
 }
 
+_SCD_MODELS_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 VTK_PATHS = {
-    'analysis': '/home/ubuntu/SCD_MODELS/laplace_complete_v2/SCD0000101/SCD0000101_analysis.vtk',
-    'classified': '/home/ubuntu/SCD_MODELS/infarct_results_corrected/SCD0000101/SCD0000101_classified.vtk',
+    'analysis': str(_SCD_MODELS_DIR / 'laplace_complete_v2' / 'SCD0000101' / 'SCD0000101_analysis.vtk'),
+    'classified': str(_SCD_MODELS_DIR / 'infarct_results_corrected' / 'SCD0000101' / 'SCD0000101_classified.vtk'),
 }
 
 plt.rcParams.update({
@@ -565,9 +566,7 @@ def create_rotation_animation(points, tissue_type, hydrogel_points, n_frames=48,
 
 
 def main():
-    print("=" * 70)
     print("PATIENT SCD0000101 - REAL VTK MESH WITH HYDROGEL VISUALIZATION")
-    print("=" * 70)
 
     # Load actual VTK mesh
     print("\n1. Loading VTK mesh...")
@@ -619,9 +618,7 @@ def main():
     create_rotation_animation(points, tissue_type, hydrogel_points,
                                n_frames=48, filename='patient001_rotation.gif')
 
-    print("\n" + "=" * 70)
     print("VISUALIZATION COMPLETE")
-    print("=" * 70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("patient001_*")):

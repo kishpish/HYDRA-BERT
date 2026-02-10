@@ -12,7 +12,7 @@ from matplotlib.colors import Normalize
 import os
 from pathlib import Path
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/3d_visualizations')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / '3d_visualizations'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 plt.rcParams.update({
@@ -337,9 +337,7 @@ def create_rotating_view_gif(vertices, regions, n_circ, n_long, n_trans,
 
 
 def main():
-    print("="*60)
     print("GENERATING 3D CARDIAC ANIMATION GIFs")
-    print("="*60)
 
     print("\n1. Creating mesh and regions...")
     vertices, n_circ, n_long, n_trans = create_lv_mesh(40, 25, 5)
@@ -364,9 +362,7 @@ def main():
     create_hydrogel_integration_gif(vertices, regions, n_circ, n_long, n_trans,
                                     "hydrogel_integration_90days.gif")
 
-    print("\n" + "="*60)
     print("GIF GENERATION COMPLETE")
-    print("="*60)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("*.gif")):

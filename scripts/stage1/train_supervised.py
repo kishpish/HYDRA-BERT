@@ -82,9 +82,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# =============================================================================
 # DEFAULT CONFIGURATION
-# =============================================================================
 
 DEFAULT_CONFIG = {
     "model": {
@@ -403,9 +401,7 @@ def main():
 
     # Training loop
     logger.info("Starting training...")
-    print("=" * 80)
     print("HYDRA-BERT STAGE 1: SUPERVISED MULTI-TASK LEARNING")
-    print("=" * 80)
 
     for epoch in range(start_epoch, config["training"]["epochs"]):
         logger.info(f"Epoch {epoch + 1}/{config['training']['epochs']}")
@@ -466,9 +462,7 @@ def main():
     logger.info(f"  AUROC: {test_metrics['auroc']:.4f}")
     logger.info(f"  F1: {test_metrics['f1']:.4f}")
 
-    print("\n" + "=" * 80)
-    print("TRAINING COMPLETE")
-    print("=" * 80)
+    print("\nTRAINING COMPLETE")
     print(f"Best validation loss: {best_val_loss:.4f}")
     print(f"Model saved to: {output_dir}")
 

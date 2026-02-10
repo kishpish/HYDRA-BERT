@@ -43,7 +43,7 @@ logger = logging.getLogger(__name__)
 
 # Configuration
 OPENCARP_BIN = "/usr/local/bin/openCARP"
-BASE_DIR = Path("/home/ubuntu/SCD_MODELS")
+BASE_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 
 
 @dataclass
@@ -808,7 +808,7 @@ def run_single_patient(patient_id: str = "SCD0000101", tend: float = 400.0,
         result = run_single_patient("SCD0000101", tend=400, n_procs=16)
     """
     if output_dir is None:
-        output_dir = "/home/ubuntu/SCD_MODELS/opencarp_results/v7"
+        output_dir = str(Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "opencarp_results" / "v7")
 
     output_base = Path(output_dir)
     output_base.mkdir(parents=True, exist_ok=True)
@@ -825,7 +825,7 @@ def run_all(tend: float = 400.0, n_procs: int = 16, output_dir: str = None) -> D
         results = run_all(tend=400, n_procs=16)
     """
     if output_dir is None:
-        output_dir = "/home/ubuntu/SCD_MODELS/opencarp_results/v7_all"
+        output_dir = str(Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "opencarp_results" / "v7_all")
 
     output_base = Path(output_dir)
     output_base.mkdir(parents=True, exist_ok=True)
@@ -857,7 +857,7 @@ if __name__ == "__main__":
         parser.add_argument("--patient", type=str, help="Single patient ID")
         parser.add_argument("--all", action="store_true", help="Run all patients")
         parser.add_argument("--output", type=str,
-                           default="/home/ubuntu/SCD_MODELS/opencarp_results/v7",
+                           default=str(Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "opencarp_results" / "v7"),
                            help="Output directory")
         parser.add_argument("--tend", type=float, default=400.0, help="Simulation duration (ms)")
         parser.add_argument("--nprocs", type=int, default=16, help="MPI processes")

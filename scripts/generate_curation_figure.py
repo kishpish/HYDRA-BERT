@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import numpy as np
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 plt.rcParams.update({
     'font.family': 'sans-serif',
@@ -167,9 +170,11 @@ def create_curation_figure():
     ax.text(7, 0.4, '24 Polymers × 60 Patients × ~310 Formulations = 447,480 Training Samples',
            fontsize=10, fontweight='bold', ha='center', va='center')
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure_polymer_curation.png',
+    figures_dir = PROJECT_ROOT / 'figures'
+    figures_dir.mkdir(parents=True, exist_ok=True)
+    plt.savefig(figures_dir / 'figure_polymer_curation.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure_polymer_curation.pdf',
+    plt.savefig(figures_dir / 'figure_polymer_curation.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Polymer curation figure saved!")
@@ -261,9 +266,11 @@ def create_polymer_diversity_figure():
                 ax2.text(j, i, '✓', ha='center', va='center', fontsize=10, fontweight='bold')
 
     plt.tight_layout()
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure_polymer_diversity.png',
+    figures_dir = PROJECT_ROOT / 'figures'
+    figures_dir.mkdir(parents=True, exist_ok=True)
+    plt.savefig(figures_dir / 'figure_polymer_diversity.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure_polymer_diversity.pdf',
+    plt.savefig(figures_dir / 'figure_polymer_diversity.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Polymer diversity figure saved!")
@@ -273,4 +280,4 @@ if __name__ == '__main__':
     create_curation_figure()
     create_polymer_diversity_figure()
     print("\nAll curation figures generated!")
-    print("Files saved to /home/ubuntu/HYDRA-BERT-FINAL/figures/")
+    print(f"Files saved to {PROJECT_ROOT / 'figures'}")

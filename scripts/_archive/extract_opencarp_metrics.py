@@ -36,8 +36,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-OPENCARP_RESULTS = Path("/home/ubuntu/SCD_MODELS/opencarp_results")
-OUTPUT_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/extracted_metrics")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+OPENCARP_RESULTS = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS')) / "opencarp_results"
+OUTPUT_DIR = PROJECT_ROOT / "results" / "extracted_metrics"
 
 
 def read_igb_file(filepath: Path) -> Optional[np.ndarray]:

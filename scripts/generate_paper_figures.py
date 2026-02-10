@@ -13,8 +13,11 @@ from matplotlib.patches import FancyBboxPatch, Circle, FancyArrowPatch, Rectangl
 from matplotlib.lines import Line2D
 import matplotlib.gridspec as gridspec
 from matplotlib.colors import LinearSegmentedColormap
+from pathlib import Path
 import warnings
 warnings.filterwarnings('ignore')
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Set publication-quality defaults
 plt.rcParams.update({
@@ -77,7 +80,7 @@ POLYMER_COLORS = {
 
 def load_data():
     """Load all results data."""
-    summary = pd.read_csv('/home/ubuntu/HYDRA-BERT-FINAL/results/final_optimal_designs/final_optimal_designs_summary.csv')
+    summary = pd.read_csv(PROJECT_ROOT / 'results' / 'final_optimal_designs' / 'final_optimal_designs_summary.csv')
 
     # Load individual patient data
     patients = ['SCD0000101', 'SCD0000201', 'SCD0000301', 'SCD0000401', 'SCD0000601',
@@ -89,21 +92,21 @@ def load_data():
 
     for patient in patients:
         try:
-            febio = pd.read_csv(f'/home/ubuntu/HYDRA-BERT-FINAL/results/febio_simulations/{patient}/febio_simulation_results.csv')
+            febio = pd.read_csv(PROJECT_ROOT / 'results' / 'febio_simulations' / patient / 'febio_simulation_results.csv')
             febio['patient_id'] = patient
             all_febio.append(febio)
         except:
             pass
 
         try:
-            opencarp = pd.read_csv(f'/home/ubuntu/HYDRA-BERT-FINAL/results/opencarp_simulations/{patient}/opencarp_simulation_results.csv')
+            opencarp = pd.read_csv(PROJECT_ROOT / 'results' / 'opencarp_simulations' / patient / 'opencarp_simulation_results.csv')
             opencarp['patient_id'] = patient
             all_opencarp.append(opencarp)
         except:
             pass
 
         try:
-            optimal = pd.read_csv(f'/home/ubuntu/HYDRA-BERT-FINAL/results/final_optimal_designs/{patient}/optimal_design.csv')
+            optimal = pd.read_csv(PROJECT_ROOT / 'results' / 'final_optimal_designs' / patient / 'optimal_design.csv')
             all_optimal.append(optimal)
         except:
             pass
@@ -254,9 +257,9 @@ def figure1_pipeline_overview():
         ax.text(x_stat, 1.5, label, fontsize=9, ha='center', va='top', color='gray')
         ax.text(x_stat, 1.0, value, fontsize=11, fontweight='bold', ha='center', va='top', color=COLORS['dark'])
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure1_pipeline_overview.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure1_pipeline_overview.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure1_pipeline_overview.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure1_pipeline_overview.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 1: Pipeline Overview - SAVED")
@@ -359,9 +362,9 @@ def figure2_polymer_library():
     ax2.spines['bottom'].set_visible(False)
 
     plt.tight_layout()
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure2_polymer_library.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure2_polymer_library.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure2_polymer_library.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure2_polymer_library.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 2: Polymer Library - SAVED")
@@ -441,9 +444,9 @@ def figure3_patient_outcomes():
                bbox_to_anchor=(0.5, 0.02), fontsize=9, title='Optimal Polymer')
 
     plt.tight_layout(rect=[0, 0.05, 1, 1])
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure3_patient_outcomes.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure3_patient_outcomes.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure3_patient_outcomes.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure3_patient_outcomes.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 3: Patient Outcomes - SAVED")
@@ -574,9 +577,9 @@ def figure4_febio_validation():
     cbar = plt.colorbar(im, ax=ax6, shrink=0.8)
     cbar.set_label('Value (%)', fontweight='bold')
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure4_febio_validation.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure4_febio_validation.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure4_febio_validation.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure4_febio_validation.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 4: FEBio Validation - SAVED")
@@ -706,9 +709,9 @@ def figure5_opencarp_validation():
     cbar = plt.colorbar(im, ax=ax6, shrink=0.8)
     cbar.set_label('Value (%)', fontweight='bold')
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure5_opencarp_validation.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure5_opencarp_validation.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure5_opencarp_validation.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure5_opencarp_validation.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 5: OpenCarp Validation - SAVED")
@@ -890,9 +893,9 @@ def figure6_optimal_designs_summary():
                     xytext=(0, 5), textcoords='offset points',
                     fontsize=7, ha='center', color=COLORS['success'], fontweight='bold')
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure6_optimal_designs_summary.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure6_optimal_designs_summary.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure6_optimal_designs_summary.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure6_optimal_designs_summary.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 6: Optimal Designs Summary - SAVED")
@@ -963,9 +966,9 @@ def figure7_smiles_structures():
         ax.text(x_start + 0.035, 0.027, cat, fontsize=8, va='center', transform=ax.transAxes)
         x_start += 0.18
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure7_smiles_structures.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure7_smiles_structures.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure7_smiles_structures.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure7_smiles_structures.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 7: SMILES Structures - SAVED")
@@ -1064,9 +1067,9 @@ def figure8_therapeutic_validation():
              bbox=dict(boxstyle='round', facecolor='#C8E6C9', edgecolor=COLORS['success']))
 
     plt.tight_layout(rect=[0, 0.08, 1, 1])
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure8_therapeutic_validation.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure8_therapeutic_validation.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure8_therapeutic_validation.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure8_therapeutic_validation.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 8: Therapeutic Validation - SAVED")
@@ -1146,9 +1149,9 @@ def figure9_design_space_exploration():
                 str(count), ha='center', va='bottom', fontsize=10, fontweight='bold')
 
     plt.tight_layout()
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure9_design_space_exploration.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure9_design_space_exploration.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure9_design_space_exploration.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure9_design_space_exploration.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 9: Design Space Exploration - SAVED")
@@ -1260,9 +1263,9 @@ def figure10_simulation_schematic():
                arrowprops=dict(arrowstyle='<->', color='gray', lw=1.5))
     ax.text(8, 6.8, 'Coupled\nAnalysis', fontsize=8, ha='center', va='bottom', color='gray')
 
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure10_simulation_schematic.png',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure10_simulation_schematic.png',
                 dpi=300, bbox_inches='tight', facecolor='white')
-    plt.savefig('/home/ubuntu/HYDRA-BERT-FINAL/figures/figure10_simulation_schematic.pdf',
+    plt.savefig(str(PROJECT_ROOT / 'figures') + '/figure10_simulation_schematic.pdf',
                 bbox_inches='tight', facecolor='white')
     plt.close()
     print("Figure 10: Simulation Schematic - SAVED")
@@ -1270,9 +1273,7 @@ def figure10_simulation_schematic():
 
 def main():
     """Generate all publication figures."""
-    print("\n" + "="*60)
-    print("HYDRA-BERT: Publication Figure Generation")
-    print("="*60 + "\n")
+    print("HYDRA-BERT: Publication Figure Generation\n")
 
     # Generate all figures
     figure1_pipeline_overview()
@@ -1286,10 +1287,8 @@ def main():
     figure9_design_space_exploration()
     figure10_simulation_schematic()
 
-    print("\n" + "="*60)
     print("ALL FIGURES GENERATED SUCCESSFULLY!")
-    print("="*60)
-    print("\nFigures saved to: /home/ubuntu/HYDRA-BERT-FINAL/figures/")
+    print(f"\nFigures saved to: {PROJECT_ROOT / 'figures'}")
     print("\nGenerated files:")
     print("  - figure1_pipeline_overview.png/pdf")
     print("  - figure2_polymer_library.png/pdf")

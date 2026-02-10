@@ -39,18 +39,14 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 def print_header():
     """Print pipeline header."""
-    print("="*70)
     print("HYDRA-BERT: Complete Patient-Specific Optimization Pipeline")
-    print("="*70)
     print(f"Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
 
 def print_summary():
     """Print pipeline summary."""
     print()
-    print("="*70)
     print("PIPELINE SUMMARY")
-    print("="*70)
     print("""
     This pipeline evaluates designs across 24 DIFFERENT polymer formulations:
 
@@ -112,12 +108,10 @@ def run_diverse_optimization():
 
 def display_results():
     """Display the final results."""
-    results_dir = Path("/home/ubuntu/HYDRA-BERT-FINAL/results/diverse_polymer_optimization")
+    results_dir = Path(__file__).resolve().parent.parent.parent / "results" / "diverse_polymer_optimization"
 
     print()
-    print("="*70)
     print("FINAL RESULTS")
-    print("="*70)
 
     # Read best designs
     best_designs_file = results_dir / "best_designs_per_patient.csv"
@@ -184,10 +178,8 @@ def main():
             return 1
 
     print()
-    print("="*70)
     print("Pipeline Complete!")
     print(f"End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("="*70)
 
     return 0
 

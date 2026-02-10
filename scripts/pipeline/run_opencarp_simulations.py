@@ -46,8 +46,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-BASE_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
-SCD_MODELS = Path("/home/ubuntu/SCD_MODELS")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+SCD_MODELS = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 OPENCARP_BIN = Path("/opt/openCARP/bin/openCARP")
 DESIGN_DIR = BASE_DIR / "results" / "design_generation"
 FEBIO_RESULTS = BASE_DIR / "results" / "febio_simulations"

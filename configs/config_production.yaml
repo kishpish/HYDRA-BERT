@@ -67,7 +67,7 @@ loss:
   focal_gamma: 2.0
 
 data:
-  data_path: "/home/ubuntu/HYDRA-BERT/data/processed"
+  data_path: "data/processed"
   train_file: "train.csv"
   val_file: "val.csv"
   test_file: "test.csv"

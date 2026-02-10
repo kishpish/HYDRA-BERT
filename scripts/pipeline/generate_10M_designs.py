@@ -50,10 +50,10 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Paths
-BASE_DIR = Path("/home/ubuntu/HYDRA-BERT-FINAL")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MODEL_DIR = BASE_DIR / "checkpoints"
 OUTPUT_DIR = BASE_DIR / "results" / "design_generation"
-POLYMER_DB = Path("/home/ubuntu/data_final/polymer_SMILES.csv")
+POLYMER_DB = Path(os.environ.get('POLYMER_DB_PATH', 'data/polymer_SMILES.csv'))
 
 # Design space parameters
 DESIGN_SPACE = {

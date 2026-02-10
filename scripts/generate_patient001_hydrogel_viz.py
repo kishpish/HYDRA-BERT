@@ -24,7 +24,7 @@ except ImportError:
     HAS_MESHIO = False
     print("WARNING: meshio not available, using synthetic mesh")
 
-OUTPUT_DIR = Path('/home/ubuntu/HYDRA-BERT-FINAL/figures/patient_specific')
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / 'figures' / 'patient_specific'
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Patient 001 data from MASTER files
@@ -48,11 +48,12 @@ PATIENT_001_DATA = {
 }
 
 # VTK file paths
+_SCD_MODELS_DIR = Path(os.environ.get('SCD_MODELS_DIR', 'SCD_MODELS'))
 VTK_PATHS = {
-    'classified': '/home/ubuntu/SCD_MODELS/infarct_results_corrected/SCD0000101/SCD0000101_classified.vtk',
-    'border': '/home/ubuntu/SCD_MODELS/infarct_results_corrected/SCD0000101/SCD0000101_BORDER.vtk',
-    'infarct': '/home/ubuntu/SCD_MODELS/infarct_results_corrected/SCD0000101/SCD0000101_INFARCT.vtk',
-    'analysis': '/home/ubuntu/SCD_MODELS/laplace_complete_v2/SCD0000101/SCD0000101_analysis.vtk',
+    'classified': str(_SCD_MODELS_DIR / 'infarct_results_corrected' / 'SCD0000101' / 'SCD0000101_classified.vtk'),
+    'border': str(_SCD_MODELS_DIR / 'infarct_results_corrected' / 'SCD0000101' / 'SCD0000101_BORDER.vtk'),
+    'infarct': str(_SCD_MODELS_DIR / 'infarct_results_corrected' / 'SCD0000101' / 'SCD0000101_INFARCT.vtk'),
+    'analysis': str(_SCD_MODELS_DIR / 'laplace_complete_v2' / 'SCD0000101' / 'SCD0000101_analysis.vtk'),
 }
 
 plt.rcParams.update({
@@ -647,10 +648,8 @@ def create_animated_gif(vertices, tissue_type, n_frames=36, filename='patient001
 
 
 def main():
-    print("=" * 70)
     print("PATIENT-SPECIFIC LV MESH VISUALIZATION WITH HYDROGEL INJECTION")
     print("Patient: SCD0000101")
-    print("=" * 70)
 
     # Try to load actual VTK mesh
     print("\n1. Loading mesh data...")
@@ -695,9 +694,7 @@ def main():
     print("\n   3e. Rotating animation...")
     create_animated_gif(vertices, tissue_type, n_frames=36, filename='patient001_rotating.gif')
 
-    print("\n" + "=" * 70)
     print("VISUALIZATION COMPLETE")
-    print("=" * 70)
     print(f"\nOutput directory: {OUTPUT_DIR}")
 
     for f in sorted(OUTPUT_DIR.glob("patient001_*")):
