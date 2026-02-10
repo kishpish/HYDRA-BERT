@@ -1,6 +1,6 @@
 # HYDRA-BERT: Hydrogel Unified Deep Regression Architecture with BERT
 
-A comprehensive deep learning pipeline for patient-specific injectable hydrogel design optimization in cardiac regeneration therapy.
+A comprehensive deep learning pipeline for patient-specific injectable hydrogel design optimization ande development in cardiac regeneration therapy, in aims to prevent re-ocurring episodes of Myocardial Infarction.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
