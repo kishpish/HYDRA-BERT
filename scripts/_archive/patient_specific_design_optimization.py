@@ -15,8 +15,6 @@ Usage:
     python patient_specific_design_optimization.py --all
     python patient_specific_design_optimization.py --patient SCD0000101
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -475,7 +473,7 @@ def generate_report(all_results: List[Dict]) -> str:
 
     report += f"""
 
-## Design Parameter Analysis
+## Design Parameter
 
 ### Stiffness Distribution
 """
@@ -490,7 +488,7 @@ def generate_report(all_results: List[Dict]) -> str:
 
 ### Simulation Approach
 
-1. **Baseline Data**: Actual FEBio simulation results (wall stress, strain, LVEF)
+1. **Baseline Data**: FEBio simulation results (wall stress, strain, LVEF)
 2. **Treatment Model**: Validated biomechanical models for hydrogel effects:
    - Wall stress reduction (Laplace Law modification)
    - EF improvement (Frank-Starling relationship)
@@ -504,7 +502,7 @@ def generate_report(all_results: List[Dict]) -> str:
    - CV improvement weight: 1.0
    - Arrhythmia reduction weight: 0.5
 
-### Therapeutic Classification
+### Classification for Therapeutic
 
 | Classification | Criteria |
 |----------------|----------|
@@ -512,11 +510,7 @@ def generate_report(all_results: List[Dict]) -> str:
 | MODERATE | ΔEF ≥ 3% OR Stress Reduction ≥ 15% |
 | MINIMAL | Below moderate thresholds |
 
-## Conclusion
 
-Patient-specific optimization selects the best hydrogel design from the candidate pool
-for each patient based on simulated treatment outcomes. The optimal designs are tailored
-to each patient's specific cardiac geometry, infarct burden, and baseline function.
 """
 
     return report
