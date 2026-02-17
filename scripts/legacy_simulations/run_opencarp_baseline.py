@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OpenCARP Simulation v7 - VERIFIED & CORRECTED
+OpenCARP Simulation v7 - verified & corrected
 
 
 VERIFIED AGAINST DOCUMENTATION:
@@ -20,7 +20,6 @@ METRICS COMPUTED:
 - Per-region activation statistics
 - Activation delays
 
-Author: Verified cardiac simulation pipeline
 """
 
 import os
