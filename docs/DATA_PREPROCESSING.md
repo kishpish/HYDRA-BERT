@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details the complete data preprocessing pipeline for HYDRA-BERT, from raw patient data and polymer libraries to the final 447,480 training samples used for model development.
+This document goes into the complete data preprocessing pipeline for HYDRA-BERT, from raw patient data and polymer libraries to the final 447,480 training samples used for model development.
 
 ---
 
@@ -152,35 +152,31 @@ def compile_initial_polymer_library():
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │  STAGE 1: Chemical Validity (565 → 423)                                 │
-│  ──────────────────────────────────────                                  │
 │  - Valid SMILES syntax (RDKit parseable)                                │
 │  - Canonical form conversion                                             │
 │  - Duplicate removal                                                     │
 │  - Excluded: 142 (invalid: 87, duplicates: 55)                          │
 │                                                                          │
 │  STAGE 2: Hydrogel Formation (423 → 187)                                │
-│  ────────────────────────────────────────                                │
+│                                  │
 │  - Gel-forming capability verification                                   │
 │  - Crosslinking mechanism presence                                       │
 │  - Water absorption capacity (>50%)                                      │
 │  - Excluded: 236 (non-gel-forming polymers)                             │
 │                                                                          │
 │  STAGE 3: Biocompatibility (187 → 89)                                   │
-│  ─────────────────────────────────────                                   │
 │  - Cytocompatibility >70% (literature/ISO 10993)                        │
 │  - Non-toxic degradation products                                        │
 │  - Immunogenicity assessment                                             │
 │  - Excluded: 98 (cytotoxic or lacking safety data)                      │
 │                                                                          │
 │  STAGE 4: Cardiac Applicability (89 → 41)                               │
-│  ─────────────────────────────────────────                               │
 │  - Injectable delivery compatibility                                     │
 │  - Stiffness range: 1-50 kPa (cardiac-matching)                         │
 │  - Evidence of cardiac use in literature                                 │
 │  - Excluded: 48 (too rigid, non-injectable, no cardiac data)            │
 │                                                                          │
 │  STAGE 5: Final Selection (41 → 24)                                     │
-│  ─────────────────────────────────                                       │
 │  - Representative category diversity                                     │
 │  - Clinical translation potential                                        │
 │  - Polymer characterization completeness                                 │
@@ -1037,7 +1033,7 @@ def perform_quality_checks(df):
 
 ```
 Quality Check Report
-====================
+
 
 1. Missing Values: PASSED (0 missing in all features)
 2. Value Ranges: PASSED (all values within expected ranges)
@@ -1059,7 +1055,6 @@ Overall Status: ALL CHECKS PASSED
 
 ```
 POLYBERT_TRAINING_FINAL.csv
-===========================
 
 Total Samples: 447,480
 Columns: 34 (19 numerical, 2 categorical, 4 target, 9 metadata)
@@ -1116,7 +1111,7 @@ data/processed/
 
 ## Conclusion
 
-The data preprocessing pipeline transforms raw polymer libraries and patient data into a high-quality, normalized dataset of 447,480 training samples. Key preprocessing steps include:
+The data preprocessing pipeline turns raw polymer libraries and patient data into a high-quality, normalized dataset of 447,480 training samples. Key preprocessing steps include:
 
 1. **Polymer curation**: 565 → 24 cardiac-specific hydrogels
 2. **Patient processing**: 10 real + 50 synthetic patients
