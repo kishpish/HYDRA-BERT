@@ -15,8 +15,6 @@ Usage:
     python extract_opencarp_metrics.py --patient SCD0000101
     python extract_opencarp_metrics.py --all
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
