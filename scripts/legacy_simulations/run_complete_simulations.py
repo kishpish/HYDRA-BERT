@@ -13,8 +13,6 @@ Usage:
     python run_complete_simulations.py --febio_only --n_workers 48
     python run_complete_simulations.py --opencarp_only --n_workers 48
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -381,9 +379,9 @@ These are **ACTUAL finite element simulations**, not surrogate models:
 """
 
     for _, row in summary_df.iterrows():
-        febio_status = "✅" if row["febio_success"] else "❌"
-        opencarp_status = "✅" if row["opencarp_success"] else "❌"
-        therapeutic_status = "✅ THERAPEUTIC" if row["is_therapeutic"] else "❌"
+        febio_status = "Good" if row["febio_success"] else "NOT"
+        opencarp_status = "Good" if row["opencarp_success"] else "NOT"
+        therapeutic_status = " THERAPEUTIC" if row["is_therapeutic"] else "NOT THERAPEUTIC"
 
         report += f"| {row['patient_id']} | {febio_status} | {opencarp_status} | "
         report += f"{row['delta_EF_pct']:.1f}% | {row['wall_stress_reduction_pct']:.1f}% | "
