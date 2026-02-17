@@ -29,7 +29,6 @@ The design generation algorithm operates on the principle of **guided combinator
 
 ```
 Design Generation Pipeline
-==========================
 
 Patient Data ──────────────────────────────────────────────────┐
      │                                                         │
