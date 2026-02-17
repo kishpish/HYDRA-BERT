@@ -2,8 +2,6 @@
 
 ## Complete System Architecture and Pipeline Details
 
-**Version:** 1.0.0 (Production)
-**Date:** February 2026
 
 ---
 
@@ -456,7 +454,7 @@ def calculate_mechanical_metrics(design, patient):
     h = patient.wall_thickness_mm
     R = 25.0  # Approximate LV radius (mm)
 
-    # === STRESS CALCULATION (Laplace Law) ===
+    #   STRESS CALCULATION (Laplace Law)  
     # σ = PR / (2h) - Modified for hydrogel support
 
     # Stiffness matching factor (optimal when E_gel ≈ E_tissue)
@@ -475,7 +473,7 @@ def calculate_mechanical_metrics(design, patient):
     stress_reduction = alpha * stiffness_ratio * coverage_factor * thickness_factor
     stress_reduction = min(stress_reduction, 0.6)  # Cap at 60%
 
-    # === STRAIN CALCULATION ===
+    #   STRAIN CALCULATION  
     # ε = σ / E - Simplified linear elasticity
 
     baseline_strain = 0.20  # Pathological scar strain
@@ -502,7 +500,7 @@ def calculate_electrical_metrics(design, patient):
     Based on cable equation and cellular models.
     """
 
-    # === CONDUCTION VELOCITY (Cable Equation) ===
+    #   CONDUCTION VELOCITY (Cable Equation)  
     # CV = sqrt(σ / (β * Cm * Sv))
     # where σ = conductivity, β = surface-to-volume ratio
 
@@ -520,7 +518,7 @@ def calculate_electrical_metrics(design, patient):
 
     cv_improvement_pct = (new_bz_cv - bz_cv) / bz_cv * 100
 
-    # === ACTIVATION TIME ===
+    #   ACTIVATION TIME  
     # Total activation depends on slowest conducting region
     baseline_activation = 125  # ms
     new_activation = baseline_activation * (bz_cv / new_bz_cv)
@@ -543,7 +541,7 @@ def calculate_functional_metrics(design, patient, mech_metrics):
     Based on Frank-Starling mechanism and pressure-volume relationships.
     """
 
-    # === EJECTION FRACTION IMPROVEMENT ===
+    #   EJECTION FRACTION IMPROVEMENT  
     # ΔEF ∝ stress_reduction * wall_motion_improvement
 
     baseline_ef = patient.baseline_LVEF_pct
@@ -558,7 +556,7 @@ def calculate_functional_metrics(design, patient, mech_metrics):
 
     new_ef = baseline_ef + delta_ef
 
-    # === STROKE VOLUME ===
+    #   STROKE VOLUME  
     # SV = EDV * EF / 100
     baseline_sv = patient.baseline_EDV_mL * baseline_ef / 100
     new_sv = patient.baseline_EDV_mL * new_ef / 100
@@ -815,24 +813,24 @@ The optimization converged to GelMA_BioIL (Gelatin Methacrylate with Biocompatib
 
 ### 8.1 What This Study Demonstrates
 
-✅ **Design Generation at Scale:** 100M designs generated and evaluated
-✅ **Multi-Stage Filtering:** Efficient reduction from 10M → 10K → 1K → top designs
-✅ **Multi-Objective Optimization:** Pareto-optimal selection across 9 metrics
-✅ **Consistent Convergence:** All patients → same optimal polymer (GelMA_BioIL)
-✅ **Therapeutic Thresholds:** Clinically-grounded criteria (ΔEF ≥ 5%, etc.)
+**Design Generation at Scale:** 100M designs generated and evaluated
+**Multi-Stage Filtering:** Efficient reduction from 10M → 10K → 1K → top designs
+**Multi-Objective Optimization:** Pareto-optimal selection across 9 metrics
+**Consistent Convergence:** All patients → same optimal polymer (GelMA_BioIL)
+**Therapeutic Thresholds:** Clinically-grounded criteria (ΔEF ≥ 5%, etc.)
 
 ### 8.2 Limitations and Future Work
 
-⚠️ **Surrogate Models:** Metrics are from analytical approximations, not full FEA
+ **Surrogate Models:** Metrics are from analytical approximations, not full FEA
 - Wall stress: Laplace law + empirical factors
 - Strain: Linear elasticity assumption
 - CV: Cable equation approximation
 
-⚠️ **Model Predictions:** HYDRA-BERT trained on simulated data
+ **Model Predictions:** HYDRA-BERT trained on simulated data
 - Real clinical validation needed
 - Animal studies required before human trials
 
-⚠️ **Fixed Patient Cohort:** 10 real patients
+ **Fixed Patient Cohort:** 10 real patients
 - Larger validation cohort needed
 - Diverse pathologies not tested
 
@@ -845,7 +843,7 @@ The optimization converged to GelMA_BioIL (Gelatin Methacrylate with Biocompatib
 
 ---
 
-## Appendix A: File Manifest
+## Appendix A: Files
 
 | File | Description |
 |------|-------------|
@@ -855,8 +853,3 @@ The optimization converged to GelMA_BioIL (Gelatin Methacrylate with Biocompatib
 | `results/therapeutic_final/all_therapeutic_designs.csv` | All 82 therapeutic designs |
 | `results/therapeutic_final/best_designs_summary.csv` | Best design per patient |
 | `results/therapeutic_final/quick_summary.csv` | Compact results table |
-
----
-
-*Document generated: February 2026*
-*HYDRA-BERT v1.0.0 Production*
