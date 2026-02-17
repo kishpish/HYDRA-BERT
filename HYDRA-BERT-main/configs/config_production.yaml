@@ -1,0 +1,108 @@
+# HYDRA-BERT Production Training Configuration
+# Following polyBERT Fine-Tuning Guide for Cardiac Hydrogel Outcome Prediction
+# Hardware: 16x NVIDIA A100 (40 GiB)
+
+model:
+  polybert_path: "kuelumbus/polyBERT"
+  polybert_dim: 600  # polyBERT output dimension
+
+  # Property encoder: 6 inputs → 256-dim
+  num_property_features: 6
+  property_hidden_dim: 256
+
+  # Patient features: 4 inputs (concatenated after encoding)
+  num_patient_features: 4
+
+  # Fusion layer: polybert(600) + properties(256) + patient(4) = 860 → 512
+  fusion_dim: 512
+
+  # Output heads
+  num_classes: 3  # harmful, beneficial, optimal
+
+  # Regularization
+  dropout: 0.1
+  freeze_polybert: true  # Phase 1: frozen, Phase 2: unfrozen
+
+training:
+  # Phase 1: Transfer learning (frozen polyBERT)
+  epochs: 10
+  batch_size: 128  # per GPU
+  gradient_accumulation_steps: 2
+  # Effective batch size: 128 × 16 GPUs × 2 = 4,096
+
+  learning_rate: 2.0e-5  # Standard for transformer fine-tuning
+  warmup_steps: 500
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  seed: 42
+
+  # Phase 2: Fine-tuning polyBERT (optional)
+  phase2_enabled: true
+  phase2_start_epoch: 8
+  phase2_epochs: 5
+  phase2_polybert_lr: 5.0e-6  # Very low for encoder
+  phase2_head_lr: 1.0e-4
+
+optimizer:
+  type: "adamw"
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+scheduler:
+  type: "cosine"
+  num_cycles: 0.5
+  min_lr_ratio: 0.01
+
+loss:
+  # Multi-task loss: MSE(gcs) + λ × CrossEntropy(class)
+  type: "multitask"
+  regression_weight: 1.0
+  classification_weight: 0.5
+
+  # Class weighting for imbalanced classification
+  # Upweight "optimal" class (class 2)
+  class_weights: [1.0, 1.0, 2.0]  # harmful, beneficial, optimal
+
+  # Focal loss gamma (for hard examples)
+  focal_gamma: 2.0
+
+data:
+  data_path: "data/processed"
+  train_file: "train.csv"
+  val_file: "val.csv"
+  test_file: "test.csv"
+
+  # SMILES tokenization
+  max_seq_length: 128  # Covers 99%+ of SMILES
+
+  # DataLoader settings
+  num_workers: 4
+  pin_memory: true
+  prefetch_factor: 2
+
+evaluation:
+  eval_every_n_steps: 500
+  save_every_n_epochs: 1
+  early_stopping_patience: 5
+  early_stopping_metric: "val_loss"
+
+  # Target metrics from guide
+  target_gcs_mae: 0.5  # Mean absolute error < 0.5%
+  target_gcs_r2: 0.75  # R² > 0.75
+  target_accuracy: 0.70  # Overall accuracy > 70%
+  target_optimal_f1: 0.62  # F1 for optimal class > 0.62
+
+logging:
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  results_dir: "results"
+  log_every_n_steps: 100
+
+  # Weights & Biases (optional)
+  use_wandb: false
+  wandb_project: "hydra-bert-cardiac"
+
+distributed:
+  use_deepspeed: false  # Use accelerate with DDP
+  fp16: true
+  gradient_checkpointing: false

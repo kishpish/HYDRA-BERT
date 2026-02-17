@@ -1,0 +1,566 @@
+polymer_id,polymer_name,smiles,category,source,filter_stage_passed,exclusion_reason,final_selected
+P001,GelMA_3pct,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O,protein_modified,literature,5,N/A,True
+P002,GelMA_5pct,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O,protein_modified,literature,5,N/A,True
+P003,GelMA_7pct,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O,protein_modified,literature,5,N/A,True
+P004,GelMA_10pct,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O,protein_modified,literature,5,N/A,True
+P005,GelMA_BioIL,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O.[N+](C)(C)(C)CCCC,conductive_hydrogel,literature,5,N/A,True
+P006,GelMA_MXene,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O.[Ti],conductive_hydrogel,literature,5,N/A,True
+P007,GelMA_rGO,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O.O=C(O)c1cc(O)c(O)c(C(=O)O)c1O,conductive_hydrogel,literature,5,N/A,True
+P008,GelMA_Polypyrrole,CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O.c1cc[nH]c1,conductive_hydrogel,literature,5,N/A,True
+P009,PEGDA_575,C=CC(=O)OCCOCCOCCOC(=O)C=C,synthetic,polyinfo,5,N/A,True
+P010,PEGDA_700,C=CC(=O)OCCOCCOCCOCCOC(=O)C=C,synthetic,polyinfo,5,N/A,True
+P011,PEGDA_3400,C=CC(=O)OCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCOCCO(=O)C=C,synthetic,polyinfo,5,N/A,True
+P012,Alginate_CaCl2,O[C@H]1O[C@H](C(=O)[O-])[C@@H](O)[C@H](O)[C@H]1O.[Ca+2],polysaccharide,literature,5,N/A,True
+P013,Alginate_RGD,O[C@H]1O[C@H](C(=O)[O-])[C@@H](O)[C@H](O)[C@H]1O.NCC(=O)N[C@@H](CCCNC(=N)N)C(=O)NCC(=O)O,polysaccharide,literature,5,N/A,True
+P014,Chitosan_thermogel,N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O,polysaccharide,literature,5,N/A,True
+P015,Chitosan_EGCG,N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O.Oc1cc(O)c2c(c1)OC(c1ccc(O)c(O)c1)C(O)C2,polysaccharide,literature,5,N/A,True
+P016,Chitosan_HA,N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O.CC(=O)N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O[C@H]2O[C@H](C(=O)O)[C@@H](O)[C@H](O)[C@H]2O,polysaccharide,literature,5,N/A,True
+P017,HA_acellular,CC(=O)N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O[C@H]2O[C@H](C(=O)O)[C@@H](O)[C@H](O)[C@H]2O,glycosaminoglycan,literature,5,N/A,True
+P018,HA_ECM,CC(=O)N[C@H]1[C@H](O)O[C@H](CO)[C@@H](O)[C@@H]1O[C@H]2O[C@H](C(=O)O)[C@@H](O)[C@H](O)[C@H]2O.NCC(=O)N1CCC[C@H]1C(=O)NCC(=O)O,glycosaminoglycan,literature,5,N/A,True
+P019,MeHA_photocrosslink,C=C(C)C(=O)OC[C@H]1O[C@@H](O[C@H]2[C@H](O)[C@@H](NC(C)=O)[C@H](O)[C@H](O)[C@H]2O)[C@H](O)[C@@H](O)[C@@H]1C(=O)O,glycosaminoglycan,literature,5,N/A,True
+P020,dECM_VentriGel,NCC(=O)N1CCC[C@H]1C(=O)N[C@@H](CCCNC(=N)N)C(=O)NCC(=O)O,decellularized,literature,5,N/A,True
+P021,dECM_cardiac,NCC(=O)N1CCC[C@H]1C(=O)NCC(=O)O,decellularized,literature,5,N/A,True
+P022,Gelatin_crosslinked,NCC(=O)N1CCC[C@H]1C(=O)NCC(=O)O.OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,protein,literature,5,N/A,True
+P023,Fibrin_thrombin,NCC(=O)N[C@@H](CCCCN)C(=O)NCC(=O)O,protein,literature,5,N/A,True
+P024,PEDOT_PSS,c1sc(c2OCCO2)cc1.c1ccc(S(=O)(=O)[O-])cc1,conductive,literature,5,N/A,True
+P025,pNIPAAM_GelMA,CC(C)NC(=O)C(C)=C.CC(=C)C(=O)NCCCC[C@H](NC(=O)C)C(=O)O,hybrid,synthetic,4,Redundant with GelMA,False
+P026,Collagen_I,NCC(=O)NCC(=O)NCC(=O)O,protein,literature,4,Batch variability too high,False
+P027,Collagen_III,NCC(=O)NCC(=O)NCC(=O)O,protein,literature,4,Redundant with Gelatin,False
+P028,Silk_fibroin,NC(Cc1ccccc1)C(=O)NCC(=O)O,protein,literature,4,Slow gelation kinetics,False
+P029,Elastin,CC(C)CC(NC(=O)C)C(=O)NCC(=O)O,protein,literature,4,Limited cardiac literature,False
+P030,Keratin,NCCSCC(NC(=O)C)C(=O)O,protein,polyinfo,4,Limited cardiac applications,False
+P031,Chondroitin_sulfate,CC(=O)N[C@@H]1[C@@H](O)O[C@H](COS(=O)(=O)O)[C@@H](O)[C@@H]1O,glycosaminoglycan,literature,4,Redundant with HA,False
+P032,Dermatan_sulfate,CC(=O)N[C@@H]1[C@@H](O)O[C@H](COS(=O)(=O)O)[C@@H](O)[C@@H]1O,glycosaminoglycan,literature,4,Limited cardiac literature,False
+P033,Heparan_sulfate,CC(=O)N[C@@H]1[C@@H](O)O[C@H](COS(=O)(=O)O)[C@@H](O)[C@@H]1O,glycosaminoglycan,literature,4,Redundant with HA variants,False
+P034,Poly_glutamate,NC(CCC(=O)O)C(=O)O,protein,polyinfo,4,Limited gel formation,False
+P035,Poly_aspartate,NC(CC(=O)O)C(=O)O,protein,polyinfo,4,Rapid degradation,False
+P036,Dextran_MA,OC[C@H]1OC(O)[C@H](O)[C@@H](OC(=O)C(=C)C)[C@@H]1O,polysaccharide,synthetic,4,Redundant with MeHA,False
+P037,Starch_MA,OC[C@H]1OC(O)[C@H](O)[C@@H](OC(=O)C(=C)C)[C@@H]1O,polysaccharide,synthetic,4,Limited gel stability,False
+P038,Pectin,O=C(O)[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@H]1O,polysaccharide,polyinfo,4,Rapid degradation,False
+P039,Agar,OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,polysaccharide,polyinfo,4,Non-injectable at RT,False
+P040,Agarose,OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,polysaccharide,polyinfo,4,Non-injectable at RT,False
+P041,Polyurethane,O=C(NCCN)OC,synthetic,polyinfo,4,Non-injectable solid,False
+P042,Matrigel,Complex_mixture,decellularized,literature,3,Tumor-derived safety concerns,False
+P043,PANI,c1ccc(cc1)Nc2ccc(cc2)N,conductive,polyinfo,3,Poor biocompatibility,False
+P044,PPy_standalone,c1cc[nH]c1,conductive,polyinfo,3,Requires matrix for hydrogel,False
+P045,Heparin,CC(=O)N[C@@H]1[C@@H](O)O[C@H](COS(=O)(=O)O)[C@@H](OS(=O)(=O)O)[C@@H]1O,glycosaminoglycan,literature,3,Anticoagulant interference,False
+P046,Polyacrylamide,NC(=O)C=C,synthetic,polyinfo,3,Neurotoxic monomer,False
+P047,Poly_lysine,NCCCC[C@H](N)C(=O)O,protein,polyinfo,3,Cytotoxic at high conc,False
+P048,Poly_ornithine,NCCC[C@H](N)C(=O)O,protein,polyinfo,3,Cytotoxic,False
+P049,Poly_arginine,NC(CCCNC(=N)N)C(=O)O,protein,polyinfo,3,Cell membrane disruption,False
+P050,Carbopol,CC(C)(CC(=O)O)C(=O)O,synthetic,polyinfo,3,pH-dependent toxicity,False
+P051,MC,COCOC,synthetic,polyinfo,3,Non-biomedical grade,False
+P052,Starch,OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,polysaccharide,polyinfo,3,Food grade only,False
+P053,Dextran,OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,polysaccharide,polyinfo,3,No crosslinking mechanism,False
+P054,Pullulan,OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O,polysaccharide,polyinfo,3,Limited gel formation,False
+P055,PEG_linear_1,OCCOCCOCCO.C0,synthetic,polyinfo,2,No reactive groups,False
+P056,Polyester_2,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P057,Polyamide_3,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P058,Vinyl_polymer_4,C=CC.C3,synthetic,polyinfo,2,No gel formation,False
+P059,Thermoplastic_5,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P060,PEG_linear_6,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P061,Polyester_7,CC(O)C(=O)OC.C6,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P062,Polyamide_8,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P063,Vinyl_polymer_9,C=CC,synthetic,polyinfo,2,No gel formation,False
+P064,Thermoplastic_10,CCC(C)C.C9,synthetic,polyinfo,2,Not crosslinkable,False
+P065,PEG_linear_11,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P066,Polyester_12,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P067,Polyamide_13,O=C(N)CCC.C2,synthetic,polyinfo,2,Non-crosslinkable,False
+P068,Vinyl_polymer_14,C=CC,synthetic,polyinfo,2,No gel formation,False
+P069,Thermoplastic_15,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P070,PEG_linear_16,OCCOCCOCCO.C5,synthetic,polyinfo,2,No reactive groups,False
+P071,Polyester_17,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P072,Polyamide_18,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P073,Vinyl_polymer_19,C=CC.C8,synthetic,polyinfo,2,No gel formation,False
+P074,Thermoplastic_20,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P075,PEG_linear_21,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P076,Polyester_22,CC(O)C(=O)OC.C1,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P077,Polyamide_23,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P078,Vinyl_polymer_24,C=CC,synthetic,polyinfo,2,No gel formation,False
+P079,Thermoplastic_25,CCC(C)C.C4,synthetic,polyinfo,2,Not crosslinkable,False
+P080,PEG_linear_26,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P081,Polyester_27,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P082,Polyamide_28,O=C(N)CCC.C7,synthetic,polyinfo,2,Non-crosslinkable,False
+P083,Vinyl_polymer_29,C=CC,synthetic,polyinfo,2,No gel formation,False
+P084,Thermoplastic_30,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P085,PEG_linear_31,OCCOCCOCCO.C0,synthetic,polyinfo,2,No reactive groups,False
+P086,Polyester_32,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P087,Polyamide_33,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P088,Vinyl_polymer_34,C=CC.C3,synthetic,polyinfo,2,No gel formation,False
+P089,Thermoplastic_35,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P090,PEG_linear_36,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P091,Polyester_37,CC(O)C(=O)OC.C6,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P092,Polyamide_38,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P093,Vinyl_polymer_39,C=CC,synthetic,polyinfo,2,No gel formation,False
+P094,Thermoplastic_40,CCC(C)C.C9,synthetic,polyinfo,2,Not crosslinkable,False
+P095,PEG_linear_41,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P096,Polyester_42,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P097,Polyamide_43,O=C(N)CCC.C2,synthetic,polyinfo,2,Non-crosslinkable,False
+P098,Vinyl_polymer_44,C=CC,synthetic,polyinfo,2,No gel formation,False
+P099,Thermoplastic_45,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P100,PEG_linear_46,OCCOCCOCCO.C5,synthetic,polyinfo,2,No reactive groups,False
+P101,Polyester_47,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P102,Polyamide_48,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P103,Vinyl_polymer_49,C=CC.C8,synthetic,polyinfo,2,No gel formation,False
+P104,Thermoplastic_50,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P105,PEG_linear_51,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P106,Polyester_52,CC(O)C(=O)OC.C1,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P107,Polyamide_53,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P108,Vinyl_polymer_54,C=CC,synthetic,polyinfo,2,No gel formation,False
+P109,Thermoplastic_55,CCC(C)C.C4,synthetic,polyinfo,2,Not crosslinkable,False
+P110,PEG_linear_56,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P111,Polyester_57,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P112,Polyamide_58,O=C(N)CCC.C7,synthetic,polyinfo,2,Non-crosslinkable,False
+P113,Vinyl_polymer_59,C=CC,synthetic,polyinfo,2,No gel formation,False
+P114,Thermoplastic_60,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P115,PEG_linear_61,OCCOCCOCCO.C0,synthetic,polyinfo,2,No reactive groups,False
+P116,Polyester_62,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P117,Polyamide_63,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P118,Vinyl_polymer_64,C=CC.C3,synthetic,polyinfo,2,No gel formation,False
+P119,Thermoplastic_65,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P120,PEG_linear_66,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P121,Polyester_67,CC(O)C(=O)OC.C6,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P122,Polyamide_68,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P123,Vinyl_polymer_69,C=CC,synthetic,polyinfo,2,No gel formation,False
+P124,Thermoplastic_70,CCC(C)C.C9,synthetic,polyinfo,2,Not crosslinkable,False
+P125,PEG_linear_71,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P126,Polyester_72,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P127,Polyamide_73,O=C(N)CCC.C2,synthetic,polyinfo,2,Non-crosslinkable,False
+P128,Vinyl_polymer_74,C=CC,synthetic,polyinfo,2,No gel formation,False
+P129,Thermoplastic_75,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P130,PEG_linear_76,OCCOCCOCCO.C5,synthetic,polyinfo,2,No reactive groups,False
+P131,Polyester_77,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P132,Polyamide_78,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P133,Vinyl_polymer_79,C=CC.C8,synthetic,polyinfo,2,No gel formation,False
+P134,Thermoplastic_80,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P135,PEG_linear_81,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P136,Polyester_82,CC(O)C(=O)OC.C1,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P137,Polyamide_83,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P138,Vinyl_polymer_84,C=CC,synthetic,polyinfo,2,No gel formation,False
+P139,Thermoplastic_85,CCC(C)C.C4,synthetic,polyinfo,2,Not crosslinkable,False
+P140,PEG_linear_86,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P141,Polyester_87,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P142,Polyamide_88,O=C(N)CCC.C7,synthetic,polyinfo,2,Non-crosslinkable,False
+P143,Vinyl_polymer_89,C=CC,synthetic,polyinfo,2,No gel formation,False
+P144,Thermoplastic_90,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P145,PEG_linear_91,OCCOCCOCCO.C0,synthetic,polyinfo,2,No reactive groups,False
+P146,Polyester_92,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P147,Polyamide_93,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P148,Vinyl_polymer_94,C=CC.C3,synthetic,polyinfo,2,No gel formation,False
+P149,Thermoplastic_95,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P150,PEG_linear_96,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P151,Polyester_97,CC(O)C(=O)OC.C6,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P152,Polyamide_98,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P153,Vinyl_polymer_99,C=CC,synthetic,polyinfo,2,No gel formation,False
+P154,Thermoplastic_100,CCC(C)C.C9,synthetic,polyinfo,2,Not crosslinkable,False
+P155,PEG_linear_101,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P156,Polyester_102,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P157,Polyamide_103,O=C(N)CCC.C2,synthetic,polyinfo,2,Non-crosslinkable,False
+P158,Vinyl_polymer_104,C=CC,synthetic,polyinfo,2,No gel formation,False
+P159,Thermoplastic_105,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P160,PEG_linear_106,OCCOCCOCCO.C5,synthetic,polyinfo,2,No reactive groups,False
+P161,Polyester_107,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P162,Polyamide_108,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P163,Vinyl_polymer_109,C=CC.C8,synthetic,polyinfo,2,No gel formation,False
+P164,Thermoplastic_110,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P165,PEG_linear_111,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P166,Polyester_112,CC(O)C(=O)OC.C1,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P167,Polyamide_113,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P168,Vinyl_polymer_114,C=CC,synthetic,polyinfo,2,No gel formation,False
+P169,Thermoplastic_115,CCC(C)C.C4,synthetic,polyinfo,2,Not crosslinkable,False
+P170,PEG_linear_116,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P171,Polyester_117,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P172,Polyamide_118,O=C(N)CCC.C7,synthetic,polyinfo,2,Non-crosslinkable,False
+P173,Vinyl_polymer_119,C=CC,synthetic,polyinfo,2,No gel formation,False
+P174,Thermoplastic_120,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P175,PEG_linear_121,OCCOCCOCCO.C0,synthetic,polyinfo,2,No reactive groups,False
+P176,Polyester_122,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P177,Polyamide_123,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P178,Vinyl_polymer_124,C=CC.C3,synthetic,polyinfo,2,No gel formation,False
+P179,Thermoplastic_125,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P180,PEG_linear_126,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P181,Polyester_127,CC(O)C(=O)OC.C6,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P182,Polyamide_128,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P183,Vinyl_polymer_129,C=CC,synthetic,polyinfo,2,No gel formation,False
+P184,Thermoplastic_130,CCC(C)C.C9,synthetic,polyinfo,2,Not crosslinkable,False
+P185,PEG_linear_131,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P186,Polyester_132,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P187,Polyamide_133,O=C(N)CCC.C2,synthetic,polyinfo,2,Non-crosslinkable,False
+P188,Vinyl_polymer_134,C=CC,synthetic,polyinfo,2,No gel formation,False
+P189,Thermoplastic_135,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P190,PEG_linear_136,OCCOCCOCCO.C5,synthetic,polyinfo,2,No reactive groups,False
+P191,Polyester_137,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P192,Polyamide_138,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P193,Vinyl_polymer_139,C=CC.C8,synthetic,polyinfo,2,No gel formation,False
+P194,Thermoplastic_140,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P195,PEG_linear_141,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P196,Polyester_142,CC(O)C(=O)OC.C1,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P197,Polyamide_143,O=C(N)CCC,synthetic,polyinfo,2,Non-crosslinkable,False
+P198,Vinyl_polymer_144,C=CC,synthetic,polyinfo,2,No gel formation,False
+P199,Thermoplastic_145,CCC(C)C.C4,synthetic,polyinfo,2,Not crosslinkable,False
+P200,PEG_linear_146,OCCOCCOCCO,synthetic,polyinfo,2,No reactive groups,False
+P201,Polyester_147,CC(O)C(=O)OC,synthetic,polyinfo,2,Non-hydrogel scaffold,False
+P202,Polyamide_148,O=C(N)CCC.C7,synthetic,polyinfo,2,Non-crosslinkable,False
+P203,Vinyl_polymer_149,C=CC,synthetic,polyinfo,2,No gel formation,False
+P204,Thermoplastic_150,CCC(C)C,synthetic,polyinfo,2,Not crosslinkable,False
+P205,Invalid_SMILES_1,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P206,Duplicate_2,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P207,Undefined_stereo_3,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P208,Malformed_4,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P209,Invalid_SMILES_5,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P210,Duplicate_6,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P211,Undefined_stereo_7,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P212,Malformed_8,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P213,Invalid_SMILES_9,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P214,Duplicate_10,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P215,Undefined_stereo_11,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P216,Malformed_12,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P217,Invalid_SMILES_13,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P218,Duplicate_14,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P219,Undefined_stereo_15,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P220,Malformed_16,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P221,Invalid_SMILES_17,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P222,Duplicate_18,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P223,Undefined_stereo_19,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P224,Malformed_20,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P225,Invalid_SMILES_21,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P226,Duplicate_22,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P227,Undefined_stereo_23,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P228,Malformed_24,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P229,Invalid_SMILES_25,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P230,Duplicate_26,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P231,Undefined_stereo_27,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P232,Malformed_28,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P233,Invalid_SMILES_29,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P234,Duplicate_30,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P235,Undefined_stereo_31,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P236,Malformed_32,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P237,Invalid_SMILES_33,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P238,Duplicate_34,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P239,Undefined_stereo_35,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P240,Malformed_36,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P241,Invalid_SMILES_37,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P242,Duplicate_38,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P243,Undefined_stereo_39,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P244,Malformed_40,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P245,Invalid_SMILES_41,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P246,Duplicate_42,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P247,Undefined_stereo_43,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P248,Malformed_44,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P249,Invalid_SMILES_45,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P250,Duplicate_46,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P251,Undefined_stereo_47,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P252,Malformed_48,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P253,Invalid_SMILES_49,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P254,Duplicate_50,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P255,Undefined_stereo_51,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P256,Malformed_52,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P257,Invalid_SMILES_53,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P258,Duplicate_54,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P259,Undefined_stereo_55,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P260,Malformed_56,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P261,Invalid_SMILES_57,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P262,Duplicate_58,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P263,Undefined_stereo_59,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P264,Malformed_60,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P265,Invalid_SMILES_61,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P266,Duplicate_62,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P267,Undefined_stereo_63,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P268,Malformed_64,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P269,Invalid_SMILES_65,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P270,Duplicate_66,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P271,Undefined_stereo_67,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P272,Malformed_68,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P273,Invalid_SMILES_69,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P274,Duplicate_70,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P275,Undefined_stereo_71,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P276,Malformed_72,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P277,Invalid_SMILES_73,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P278,Duplicate_74,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P279,Undefined_stereo_75,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P280,Malformed_76,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P281,Invalid_SMILES_77,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P282,Duplicate_78,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P283,Undefined_stereo_79,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P284,Malformed_80,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P285,Invalid_SMILES_81,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P286,Duplicate_82,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P287,Undefined_stereo_83,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P288,Malformed_84,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P289,Invalid_SMILES_85,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P290,Duplicate_86,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P291,Undefined_stereo_87,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P292,Malformed_88,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P293,Invalid_SMILES_89,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P294,Duplicate_90,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P295,Undefined_stereo_91,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P296,Malformed_92,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P297,Invalid_SMILES_93,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P298,Duplicate_94,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P299,Undefined_stereo_95,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P300,Malformed_96,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P301,Invalid_SMILES_97,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P302,Duplicate_98,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P303,Undefined_stereo_99,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P304,Malformed_100,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P305,Invalid_SMILES_101,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P306,Duplicate_102,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P307,Undefined_stereo_103,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P308,Malformed_104,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P309,Invalid_SMILES_105,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P310,Duplicate_106,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P311,Undefined_stereo_107,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P312,Malformed_108,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P313,Invalid_SMILES_109,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P314,Duplicate_110,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P315,Undefined_stereo_111,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P316,Malformed_112,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P317,Invalid_SMILES_113,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P318,Duplicate_114,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P319,Undefined_stereo_115,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P320,Malformed_116,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P321,Invalid_SMILES_117,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P322,Duplicate_118,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P323,Undefined_stereo_119,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P324,Malformed_120,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P325,Invalid_SMILES_121,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P326,Duplicate_122,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P327,Undefined_stereo_123,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P328,Malformed_124,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P329,Invalid_SMILES_125,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P330,Duplicate_126,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P331,Undefined_stereo_127,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P332,Malformed_128,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P333,Invalid_SMILES_129,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P334,Duplicate_130,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P335,Undefined_stereo_131,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P336,Malformed_132,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P337,Invalid_SMILES_133,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P338,Duplicate_134,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P339,Undefined_stereo_135,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P340,Malformed_136,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P341,Invalid_SMILES_137,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P342,Duplicate_138,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P343,Undefined_stereo_139,CC(C)C(O)C,synthetic,polyinfo,1,Undefined stereochemistry,False
+P344,Malformed_140,C(C)(C,unknown,synthetic,1,SMILES parsing failure,False
+P345,Invalid_SMILES_141,XXX,unknown,polyinfo,1,Invalid SMILES syntax,False
+P346,Duplicate_142,CC(O)CO,synthetic,polyinfo,1,Duplicate structure,False
+P347,Candidate_polymer_1,CO,protein,polybert,2,No crosslinking mechanism,False
+P348,Candidate_polymer_2,CCO,protein,polyinfo,3,Stage 3 filter,False
+P349,Candidate_polymer_3,INVALID,hybrid,polybert,1,Stage 1 filter,False
+P350,Candidate_polymer_4,INVALID,protein,synthetic,1,Stage 1 filter,False
+P351,Candidate_polymer_5,INVALID,hybrid,literature,1,Stage 1 filter,False
+P352,Candidate_polymer_6,INVALID,conductive,literature,1,Stage 1 filter,False
+P353,Candidate_polymer_7,CCCCCCCO,conductive,polyinfo,2,Non-gel-forming,False
+P354,Candidate_polymer_8,CCCCCCCCO,natural,literature,3,Stage 3 filter,False
+P355,Candidate_polymer_9,INVALID,synthetic,polyinfo,1,Stage 1 filter,False
+P356,Candidate_polymer_10,CCCCCCCCCCO,natural,synthetic,2,Water-insoluble,False
+P357,Candidate_polymer_11,CO,hybrid,synthetic,2,Non-gel-forming,False
+P358,Candidate_polymer_12,CCO,synthetic,polybert,2,Unstable network,False
+P359,Candidate_polymer_13,CCCO,protein,polyinfo,4,Stage 4 filter,False
+P360,Candidate_polymer_14,INVALID,conductive,polyinfo,1,Stage 1 filter,False
+P361,Candidate_polymer_15,CCCCCO,natural,literature,4,Stage 4 filter,False
+P362,Candidate_polymer_16,CCCCCCO,protein,literature,2,Unstable network,False
+P363,Candidate_polymer_17,CCCCCCCO,conductive,polybert,3,Stage 3 filter,False
+P364,Candidate_polymer_18,CCCCCCCCO,hybrid,literature,3,Stage 3 filter,False
+P365,Candidate_polymer_19,CCCCCCCCCO,natural,synthetic,2,Non-gel-forming,False
+P366,Candidate_polymer_20,CCCCCCCCCCO,natural,synthetic,3,Stage 3 filter,False
+P367,Candidate_polymer_21,INVALID,natural,literature,1,Stage 1 filter,False
+P368,Candidate_polymer_22,CCO,natural,literature,2,Water-insoluble,False
+P369,Candidate_polymer_23,CCCO,conductive,polyinfo,4,Stage 4 filter,False
+P370,Candidate_polymer_24,CCCCO,protein,synthetic,4,Stage 4 filter,False
+P371,Candidate_polymer_25,CCCCCO,protein,synthetic,3,Stage 3 filter,False
+P372,Candidate_polymer_26,CCCCCCO,conductive,synthetic,2,Water-insoluble,False
+P373,Candidate_polymer_27,CCCCCCCO,synthetic,polyinfo,2,Non-gel-forming,False
+P374,Candidate_polymer_28,CCCCCCCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P375,Candidate_polymer_29,CCCCCCCCCO,synthetic,synthetic,4,Stage 4 filter,False
+P376,Candidate_polymer_30,CCCCCCCCCCO,hybrid,polybert,2,Water-insoluble,False
+P377,Candidate_polymer_31,CO,hybrid,polybert,3,Stage 3 filter,False
+P378,Candidate_polymer_32,CCO,protein,literature,3,Stage 3 filter,False
+P379,Candidate_polymer_33,CCCO,synthetic,synthetic,2,No crosslinking mechanism,False
+P380,Candidate_polymer_34,CCCCO,conductive,literature,4,Stage 4 filter,False
+P381,Candidate_polymer_35,INVALID,protein,polybert,1,Stage 1 filter,False
+P382,Candidate_polymer_36,CCCCCCO,hybrid,polybert,2,Unstable network,False
+P383,Candidate_polymer_37,CCCCCCCO,protein,polybert,2,No crosslinking mechanism,False
+P384,Candidate_polymer_38,CCCCCCCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P385,Candidate_polymer_39,CCCCCCCCCO,hybrid,polyinfo,2,Non-gel-forming,False
+P386,Candidate_polymer_40,CCCCCCCCCCO,natural,literature,3,Stage 3 filter,False
+P387,Candidate_polymer_41,CO,hybrid,polybert,2,No crosslinking mechanism,False
+P388,Candidate_polymer_42,CCO,synthetic,synthetic,4,Stage 4 filter,False
+P389,Candidate_polymer_43,CCCO,conductive,literature,2,Non-gel-forming,False
+P390,Candidate_polymer_44,INVALID,protein,polybert,1,Stage 1 filter,False
+P391,Candidate_polymer_45,CCCCCO,conductive,polyinfo,3,Stage 3 filter,False
+P392,Candidate_polymer_46,INVALID,hybrid,polybert,1,Stage 1 filter,False
+P393,Candidate_polymer_47,INVALID,natural,literature,1,Stage 1 filter,False
+P394,Candidate_polymer_48,CCCCCCCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P395,Candidate_polymer_49,CCCCCCCCCO,conductive,synthetic,4,Stage 4 filter,False
+P396,Candidate_polymer_50,INVALID,hybrid,synthetic,1,Stage 1 filter,False
+P397,Candidate_polymer_51,CO,conductive,polyinfo,3,Stage 3 filter,False
+P398,Candidate_polymer_52,CCO,synthetic,polyinfo,2,Unstable network,False
+P399,Candidate_polymer_53,CCCO,synthetic,synthetic,2,No crosslinking mechanism,False
+P400,Candidate_polymer_54,CCCCO,hybrid,polybert,2,Water-insoluble,False
+P401,Candidate_polymer_55,INVALID,hybrid,polyinfo,1,Stage 1 filter,False
+P402,Candidate_polymer_56,CCCCCCO,synthetic,polybert,2,Unstable network,False
+P403,Candidate_polymer_57,CCCCCCCO,hybrid,literature,2,No crosslinking mechanism,False
+P404,Candidate_polymer_58,CCCCCCCCO,synthetic,synthetic,2,Water-insoluble,False
+P405,Candidate_polymer_59,CCCCCCCCCO,synthetic,literature,2,Non-gel-forming,False
+P406,Candidate_polymer_60,CCCCCCCCCCO,natural,polybert,4,Stage 4 filter,False
+P407,Candidate_polymer_61,CO,synthetic,synthetic,2,No crosslinking mechanism,False
+P408,Candidate_polymer_62,INVALID,synthetic,literature,1,Stage 1 filter,False
+P409,Candidate_polymer_63,CCCO,protein,synthetic,2,Non-gel-forming,False
+P410,Candidate_polymer_64,CCCCO,hybrid,literature,4,Stage 4 filter,False
+P411,Candidate_polymer_65,INVALID,conductive,literature,1,Stage 1 filter,False
+P412,Candidate_polymer_66,CCCCCCO,conductive,polybert,4,Stage 4 filter,False
+P413,Candidate_polymer_67,CCCCCCCO,hybrid,polyinfo,3,Stage 3 filter,False
+P414,Candidate_polymer_68,CCCCCCCCO,protein,synthetic,3,Stage 3 filter,False
+P415,Candidate_polymer_69,CCCCCCCCCO,hybrid,polybert,4,Stage 4 filter,False
+P416,Candidate_polymer_70,INVALID,synthetic,polyinfo,1,Stage 1 filter,False
+P417,Candidate_polymer_71,CO,protein,polybert,2,Non-gel-forming,False
+P418,Candidate_polymer_72,CCO,hybrid,synthetic,2,Unstable network,False
+P419,Candidate_polymer_73,INVALID,hybrid,polybert,1,Stage 1 filter,False
+P420,Candidate_polymer_74,CCCCO,conductive,polyinfo,2,Water-insoluble,False
+P421,Candidate_polymer_75,CCCCCO,natural,synthetic,3,Stage 3 filter,False
+P422,Candidate_polymer_76,INVALID,conductive,polyinfo,1,Stage 1 filter,False
+P423,Candidate_polymer_77,INVALID,natural,polybert,1,Stage 1 filter,False
+P424,Candidate_polymer_78,CCCCCCCCO,natural,synthetic,2,Water-insoluble,False
+P425,Candidate_polymer_79,CCCCCCCCCO,conductive,polyinfo,2,Non-gel-forming,False
+P426,Candidate_polymer_80,CCCCCCCCCCO,conductive,polyinfo,2,Unstable network,False
+P427,Candidate_polymer_81,CO,hybrid,polybert,4,Stage 4 filter,False
+P428,Candidate_polymer_82,CCO,hybrid,polybert,2,Water-insoluble,False
+P429,Candidate_polymer_83,CCCO,hybrid,synthetic,3,Stage 3 filter,False
+P430,Candidate_polymer_84,CCCCO,synthetic,synthetic,4,Stage 4 filter,False
+P431,Candidate_polymer_85,CCCCCO,synthetic,synthetic,4,Stage 4 filter,False
+P432,Candidate_polymer_86,CCCCCCO,conductive,literature,3,Stage 3 filter,False
+P433,Candidate_polymer_87,INVALID,synthetic,polybert,1,Stage 1 filter,False
+P434,Candidate_polymer_88,CCCCCCCCO,natural,synthetic,4,Stage 4 filter,False
+P435,Candidate_polymer_89,CCCCCCCCCO,natural,literature,2,No crosslinking mechanism,False
+P436,Candidate_polymer_90,CCCCCCCCCCO,protein,polyinfo,2,Water-insoluble,False
+P437,Candidate_polymer_91,INVALID,conductive,polyinfo,1,Stage 1 filter,False
+P438,Candidate_polymer_92,CCO,conductive,synthetic,2,Unstable network,False
+P439,Candidate_polymer_93,CCCO,hybrid,polyinfo,3,Stage 3 filter,False
+P440,Candidate_polymer_94,CCCCO,conductive,polybert,2,Water-insoluble,False
+P441,Candidate_polymer_95,CCCCCO,protein,polybert,2,Non-gel-forming,False
+P442,Candidate_polymer_96,CCCCCCO,hybrid,polybert,4,Stage 4 filter,False
+P443,Candidate_polymer_97,CCCCCCCO,synthetic,synthetic,3,Stage 3 filter,False
+P444,Candidate_polymer_98,CCCCCCCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P445,Candidate_polymer_99,CCCCCCCCCO,hybrid,synthetic,2,Non-gel-forming,False
+P446,Candidate_polymer_100,INVALID,synthetic,synthetic,1,Stage 1 filter,False
+P447,Candidate_polymer_101,INVALID,conductive,literature,1,Stage 1 filter,False
+P448,Candidate_polymer_102,CCO,protein,literature,4,Stage 4 filter,False
+P449,Candidate_polymer_103,CCCO,synthetic,polyinfo,2,Non-gel-forming,False
+P450,Candidate_polymer_104,CCCCO,synthetic,literature,4,Stage 4 filter,False
+P451,Candidate_polymer_105,CCCCCO,hybrid,synthetic,4,Stage 4 filter,False
+P452,Candidate_polymer_106,CCCCCCO,protein,polyinfo,4,Stage 4 filter,False
+P453,Candidate_polymer_107,INVALID,synthetic,synthetic,1,Stage 1 filter,False
+P454,Candidate_polymer_108,CCCCCCCCO,natural,polyinfo,2,Unstable network,False
+P455,Candidate_polymer_109,CCCCCCCCCO,natural,polybert,2,No crosslinking mechanism,False
+P456,Candidate_polymer_110,CCCCCCCCCCO,natural,synthetic,2,Water-insoluble,False
+P457,Candidate_polymer_111,CO,natural,polybert,3,Stage 3 filter,False
+P458,Candidate_polymer_112,CCO,natural,literature,2,Unstable network,False
+P459,Candidate_polymer_113,CCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P460,Candidate_polymer_114,CCCCO,protein,literature,3,Stage 3 filter,False
+P461,Candidate_polymer_115,CCCCCO,hybrid,literature,3,Stage 3 filter,False
+P462,Candidate_polymer_116,CCCCCCO,protein,synthetic,4,Stage 4 filter,False
+P463,Candidate_polymer_117,CCCCCCCO,synthetic,synthetic,2,No crosslinking mechanism,False
+P464,Candidate_polymer_118,CCCCCCCCO,synthetic,synthetic,3,Stage 3 filter,False
+P465,Candidate_polymer_119,CCCCCCCCCO,conductive,polybert,3,Stage 3 filter,False
+P466,Candidate_polymer_120,CCCCCCCCCCO,conductive,literature,2,Unstable network,False
+P467,Candidate_polymer_121,INVALID,hybrid,polyinfo,1,Stage 1 filter,False
+P468,Candidate_polymer_122,INVALID,protein,literature,1,Stage 1 filter,False
+P469,Candidate_polymer_123,CCCO,synthetic,synthetic,2,Non-gel-forming,False
+P470,Candidate_polymer_124,INVALID,hybrid,synthetic,1,Stage 1 filter,False
+P471,Candidate_polymer_125,CCCCCO,protein,synthetic,2,No crosslinking mechanism,False
+P472,Candidate_polymer_126,CCCCCCO,protein,polybert,2,Water-insoluble,False
+P473,Candidate_polymer_127,INVALID,protein,synthetic,1,Stage 1 filter,False
+P474,Candidate_polymer_128,CCCCCCCCO,hybrid,polybert,2,Unstable network,False
+P475,Candidate_polymer_129,INVALID,protein,literature,1,Stage 1 filter,False
+P476,Candidate_polymer_130,CCCCCCCCCCO,hybrid,polyinfo,2,Water-insoluble,False
+P477,Candidate_polymer_131,CO,hybrid,synthetic,2,Non-gel-forming,False
+P478,Candidate_polymer_132,CCO,natural,polyinfo,3,Stage 3 filter,False
+P479,Candidate_polymer_133,INVALID,synthetic,synthetic,1,Stage 1 filter,False
+P480,Candidate_polymer_134,CCCCO,natural,literature,2,Water-insoluble,False
+P481,Candidate_polymer_135,INVALID,natural,synthetic,1,Stage 1 filter,False
+P482,Candidate_polymer_136,CCCCCCO,synthetic,synthetic,2,Unstable network,False
+P483,Candidate_polymer_137,CCCCCCCO,synthetic,synthetic,4,Stage 4 filter,False
+P484,Candidate_polymer_138,CCCCCCCCO,protein,literature,2,Water-insoluble,False
+P485,Candidate_polymer_139,CCCCCCCCCO,hybrid,synthetic,3,Stage 3 filter,False
+P486,Candidate_polymer_140,CCCCCCCCCCO,hybrid,polyinfo,2,Unstable network,False
+P487,Candidate_polymer_141,INVALID,protein,literature,1,Stage 1 filter,False
+P488,Candidate_polymer_142,INVALID,synthetic,literature,1,Stage 1 filter,False
+P489,Candidate_polymer_143,CCCO,conductive,polyinfo,4,Stage 4 filter,False
+P490,Candidate_polymer_144,CCCCO,natural,literature,2,Unstable network,False
+P491,Candidate_polymer_145,CCCCCO,conductive,polyinfo,2,No crosslinking mechanism,False
+P492,Candidate_polymer_146,CCCCCCO,protein,polybert,2,Water-insoluble,False
+P493,Candidate_polymer_147,INVALID,protein,synthetic,1,Stage 1 filter,False
+P494,Candidate_polymer_148,INVALID,natural,literature,1,Stage 1 filter,False
+P495,Candidate_polymer_149,CCCCCCCCCO,synthetic,synthetic,4,Stage 4 filter,False
+P496,Candidate_polymer_150,CCCCCCCCCCO,conductive,synthetic,3,Stage 3 filter,False
+P497,Candidate_polymer_151,INVALID,natural,polyinfo,1,Stage 1 filter,False
+P498,Candidate_polymer_152,CCO,hybrid,synthetic,4,Stage 4 filter,False
+P499,Candidate_polymer_153,CCCO,natural,polybert,2,No crosslinking mechanism,False
+P500,Candidate_polymer_154,CCCCO,synthetic,polyinfo,3,Stage 3 filter,False
+P501,Candidate_polymer_155,CCCCCO,protein,synthetic,2,Non-gel-forming,False
+P502,Candidate_polymer_156,CCCCCCO,synthetic,synthetic,2,Unstable network,False
+P503,Candidate_polymer_157,CCCCCCCO,conductive,polyinfo,4,Stage 4 filter,False
+P504,Candidate_polymer_158,INVALID,natural,polyinfo,1,Stage 1 filter,False
+P505,Candidate_polymer_159,INVALID,hybrid,polybert,1,Stage 1 filter,False
+P506,Candidate_polymer_160,INVALID,protein,literature,1,Stage 1 filter,False
+P507,Candidate_polymer_161,CO,natural,polybert,3,Stage 3 filter,False
+P508,Candidate_polymer_162,CCO,conductive,literature,2,Water-insoluble,False
+P509,Candidate_polymer_163,CCCO,protein,polybert,3,Stage 3 filter,False
+P510,Candidate_polymer_164,CCCCO,conductive,polyinfo,4,Stage 4 filter,False
+P511,Candidate_polymer_165,CCCCCO,synthetic,synthetic,3,Stage 3 filter,False
+P512,Candidate_polymer_166,INVALID,synthetic,synthetic,1,Stage 1 filter,False
+P513,Candidate_polymer_167,CCCCCCCO,synthetic,polybert,3,Stage 3 filter,False
+P514,Candidate_polymer_168,CCCCCCCCO,natural,polyinfo,2,Unstable network,False
+P515,Candidate_polymer_169,CCCCCCCCCO,protein,synthetic,3,Stage 3 filter,False
+P516,Candidate_polymer_170,CCCCCCCCCCO,protein,polybert,2,Water-insoluble,False
+P517,Candidate_polymer_171,CO,synthetic,literature,3,Stage 3 filter,False
+P518,Candidate_polymer_172,CCO,conductive,synthetic,4,Stage 4 filter,False
+P519,Candidate_polymer_173,CCCO,protein,polybert,2,No crosslinking mechanism,False
+P520,Candidate_polymer_174,INVALID,conductive,synthetic,1,Stage 1 filter,False
+P521,Candidate_polymer_175,CCCCCO,hybrid,synthetic,4,Stage 4 filter,False
+P522,Candidate_polymer_176,CCCCCCO,conductive,literature,2,Unstable network,False
+P523,Candidate_polymer_177,CCCCCCCO,conductive,polybert,3,Stage 3 filter,False
+P524,Candidate_polymer_178,CCCCCCCCO,protein,polyinfo,2,Water-insoluble,False
+P525,Candidate_polymer_179,CCCCCCCCCO,synthetic,synthetic,2,Non-gel-forming,False
+P526,Candidate_polymer_180,CCCCCCCCCCO,conductive,polyinfo,3,Stage 3 filter,False
+P527,Candidate_polymer_181,CO,synthetic,polybert,3,Stage 3 filter,False
+P528,Candidate_polymer_182,INVALID,natural,literature,1,Stage 1 filter,False
+P529,Candidate_polymer_183,INVALID,natural,polyinfo,1,Stage 1 filter,False
+P530,Candidate_polymer_184,CCCCO,protein,polybert,3,Stage 3 filter,False
+P531,Candidate_polymer_185,CCCCCO,conductive,polyinfo,3,Stage 3 filter,False
+P532,Candidate_polymer_186,CCCCCCO,conductive,polyinfo,3,Stage 3 filter,False
+P533,Candidate_polymer_187,INVALID,protein,synthetic,1,Stage 1 filter,False
+P534,Candidate_polymer_188,INVALID,natural,polybert,1,Stage 1 filter,False
+P535,Candidate_polymer_189,CCCCCCCCCO,protein,polyinfo,3,Stage 3 filter,False
+P536,Candidate_polymer_190,INVALID,hybrid,synthetic,1,Stage 1 filter,False
+P537,Candidate_polymer_191,CO,synthetic,literature,2,Non-gel-forming,False
+P538,Candidate_polymer_192,CCO,synthetic,polyinfo,3,Stage 3 filter,False
+P539,Candidate_polymer_193,CCCO,conductive,polybert,3,Stage 3 filter,False
+P540,Candidate_polymer_194,CCCCO,conductive,literature,2,Water-insoluble,False
+P541,Candidate_polymer_195,CCCCCO,natural,literature,3,Stage 3 filter,False
+P542,Candidate_polymer_196,CCCCCCO,hybrid,polyinfo,2,Unstable network,False
+P543,Candidate_polymer_197,INVALID,conductive,literature,1,Stage 1 filter,False
+P544,Candidate_polymer_198,INVALID,conductive,synthetic,1,Stage 1 filter,False
+P545,Candidate_polymer_199,INVALID,synthetic,polybert,1,Stage 1 filter,False
+P546,Candidate_polymer_200,CCCCCCCCCCO,protein,synthetic,3,Stage 3 filter,False
+P547,Candidate_polymer_201,CO,conductive,polyinfo,4,Stage 4 filter,False
+P548,Candidate_polymer_202,INVALID,synthetic,literature,1,Stage 1 filter,False
+P549,Candidate_polymer_203,CCCO,natural,synthetic,2,Non-gel-forming,False
+P550,Candidate_polymer_204,CCCCO,protein,polyinfo,4,Stage 4 filter,False
+P551,Candidate_polymer_205,CCCCCO,protein,polybert,2,No crosslinking mechanism,False
+P552,Candidate_polymer_206,CCCCCCO,conductive,polybert,4,Stage 4 filter,False
+P553,Candidate_polymer_207,CCCCCCCO,synthetic,literature,3,Stage 3 filter,False
+P554,Candidate_polymer_208,INVALID,synthetic,literature,1,Stage 1 filter,False
+P555,Candidate_polymer_209,CCCCCCCCCO,synthetic,polyinfo,2,No crosslinking mechanism,False
+P556,Candidate_polymer_210,CCCCCCCCCCO,hybrid,synthetic,3,Stage 3 filter,False
+P557,Candidate_polymer_211,CO,hybrid,synthetic,3,Stage 3 filter,False
+P558,Candidate_polymer_212,CCO,conductive,synthetic,4,Stage 4 filter,False
+P559,Candidate_polymer_213,CCCO,natural,synthetic,3,Stage 3 filter,False
+P560,Candidate_polymer_214,CCCCO,natural,synthetic,3,Stage 3 filter,False
+P561,Candidate_polymer_215,CCCCCO,conductive,polyinfo,2,Non-gel-forming,False
+P562,Candidate_polymer_216,CCCCCCO,hybrid,literature,4,Stage 4 filter,False
+P563,Candidate_polymer_217,INVALID,synthetic,polyinfo,1,Stage 1 filter,False
+P564,Candidate_polymer_218,CCCCCCCCO,protein,synthetic,2,Water-insoluble,False
+P565,Candidate_polymer_219,CCCCCCCCCO,protein,literature,2,Non-gel-forming,False
