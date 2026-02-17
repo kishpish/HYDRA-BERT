@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the comprehensive validation methodology for HYDRA-BERT, including machine learning model validation, physics-based simulation validation, and therapeutic efficacy assessment.
+This document describes the validation methodology for HYDRA-BERT, including machine learning model validation, physics-based simulation validation, and therapeutic efficacy assessment.
 
 ---
 
