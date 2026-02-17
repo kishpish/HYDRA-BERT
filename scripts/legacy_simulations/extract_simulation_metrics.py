@@ -12,8 +12,6 @@ Usage:
     python extract_simulation_metrics.py --febio_only
     python extract_simulation_metrics.py --opencarp_only
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
