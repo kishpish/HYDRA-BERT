@@ -12,8 +12,6 @@ Usage:
     python run_optimal_hydrogel_febio.py --all          # All 10 patients
     python run_optimal_hydrogel_febio.py --patient SCD0000101  # Single patient
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
