@@ -2,7 +2,7 @@
 """
 HYDRA-BERT: Compute Hydrogel Treatment Effects from Baseline FEBio Simulations
 
-This script uses ACTUAL baseline FEBio simulation data combined with validated
+This script uses actual baseline FEBio simulation data combined with validated
 biomechanical models to compute the treatment effects of the optimal hydrogel
 (GelMA_BioIL) when applied to the infarct zone.
 
@@ -20,8 +20,6 @@ Usage:
     python compute_hydrogel_treatment_effects.py --all
     python compute_hydrogel_treatment_effects.py --patient SCD0000101
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -528,33 +526,6 @@ def generate_report(summary: Dict, results: List[Dict]) -> str:
 
     report += f"""
 
-## Methodology
-
-### Biomechanical Models
-
-1. **Wall Stress Reduction**: Computed using modified Laplace Law for hydrogel support
-   - Accounts for stiffness matching (optimal at native tissue ~10-15 kPa)
-   - Coverage effect with diminishing returns
-   - Literature: Kichula et al., 2014
-
-2. **EF Improvement**: Frank-Starling mechanism and contractile efficiency
-   - Stress-function relationship: ~2-3% EF gain per 10% stress reduction
-   - Border zone salvage contribution
-   - Literature: Guccione et al., 2001
-
-3. **Strain Normalization**: Tissue mechanics recovery
-   - Based on global longitudinal strain improvement
-   - Literature: Holmes et al., 2005
-
-4. **CV Improvement**: Conductive hydrogel electrical restoration
-   - Ionic liquid (BioIL) conductivity: 0.5 S/m
-   - Literature: Annabi et al., 2016
-
-### Data Sources
-
-- **Baseline Metrics**: Extracted from actual FEBio simulations using Holzapfel-Ogden material model
-- **Mesh Data**: Patient-specific tetrahedral meshes from cardiac MRI
-- **Infarct Classification**: Element-wise tagging (healthy/border zone/scar)
 
 ## Therapeutic Thresholds
 
@@ -562,14 +533,8 @@ def generate_report(summary: Dict, results: List[Dict]) -> str:
 |--------|-----------|
 | ΔEF | ≥ 5% |
 | Wall Stress Reduction | ≥ 25% |
-| Classification | THERAPEUTIC if both met |
 
-## Conclusion
 
-The optimal hydrogel (GelMA_BioIL) achieves **THERAPEUTIC** status in all patients when applied
-to the infarct zone (scar + border zone). The 15 kPa stiffness matches native myocardium,
-providing optimal mechanical support while the ionic liquid component improves electrical
-conduction across the scar tissue.
 """
 
     return report
