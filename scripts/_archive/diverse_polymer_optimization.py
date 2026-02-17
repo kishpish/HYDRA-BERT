@@ -16,8 +16,6 @@ Therapeutic Thresholds:
 - Wall Stress Reduction >= 25%
 - Strain Normalization >= 15%
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -133,7 +131,7 @@ def simulate_treatment_effect(design: Dict, baseline: Dict, infarct: Dict) -> Di
     scar_fraction = infarct.get('scar_fraction', 0.15)
     transmurality = infarct.get('transmurality', 0.75)
 
-    # ===== 1. Wall Stress Reduction (Modified Laplace Law) =====
+    #  1. Wall Stress Reduction (Modified Laplace Law) 
     # Optimal stiffness matching: E_hydrogel ~ 12-18 kPa (healthy tissue)
     # Too stiff (>50 kPa) -> stress concentration
     # Too soft (<5 kPa) -> insufficient support
@@ -169,7 +167,7 @@ def simulate_treatment_effect(design: Dict, baseline: Dict, infarct: Dict) -> Di
 
     treated_stress = stress_baseline * (1 - stress_reduction_pct / 100)
 
-    # ===== 2. EF Improvement (Frank-Starling Mechanism) =====
+    #   2. EF Improvement (Frank-Starling Mechanism)  
     # Improved wall mechanics -> better ejection
     # Relationship: ΔEF ~ stress_reduction * contractility_reserve
 
@@ -190,7 +188,7 @@ def simulate_treatment_effect(design: Dict, baseline: Dict, infarct: Dict) -> Di
     ef_improvement = max(3.0, min(15.0, ef_improvement))
     new_lvef = lvef_baseline + ef_improvement
 
-    # ===== 3. Strain Normalization =====
+    #   3. Strain Normalization  
     # Target: reduce border zone strain heterogeneity
 
     strain_target = 0.15  # Healthy strain
@@ -204,7 +202,7 @@ def simulate_treatment_effect(design: Dict, baseline: Dict, infarct: Dict) -> Di
     )
     strain_normalization_pct = max(10.0, min(35.0, strain_normalization_pct))
 
-    # ===== 4. Conduction Velocity Improvement =====
+    #   4. Conduction Velocity Improvement  
     # Only for conductive hydrogels (conductivity > 0.1 S/m)
 
     if conductivity > 0.1:
@@ -218,7 +216,7 @@ def simulate_treatment_effect(design: Dict, baseline: Dict, infarct: Dict) -> Di
         cv_improvement_pct = 0.0
         arrhythmia_reduction = 0.0
 
-    # ===== 5. Therapeutic Score =====
+    #   5. Therapeutic Score  
     therapeutic_score = (
         ef_improvement * 3.0 +
         stress_reduction_pct * 1.5 +
