@@ -15,8 +15,6 @@ Usage:
     python extract_febio_metrics.py --all
     python extract_febio_metrics.py --xplt /path/to/file.xplt
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
