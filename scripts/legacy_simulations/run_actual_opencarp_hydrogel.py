@@ -2,14 +2,12 @@
 """
 HYDRA-BERT: Actual OpenCarp Hydrogel Electrophysiology Simulation
 
-This script runs ACTUAL OpenCarp finite element simulations (not surrogate models)
+This script runs OpenCarp finite element simulations (not surrogate models)
 with hydrogel treatment applied to infarct regions to improve electrical conduction.
 
 Usage:
     python run_actual_opencarp_hydrogel.py --parallel --n_workers 24
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
