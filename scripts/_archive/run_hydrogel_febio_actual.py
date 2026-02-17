@@ -14,8 +14,6 @@ Usage:
     python run_hydrogel_febio_actual.py --patient SCD0000101
     python run_hydrogel_febio_actual.py --all --parallel 10
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
