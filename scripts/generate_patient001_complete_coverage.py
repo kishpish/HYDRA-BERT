@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Patient SCD0000101 - Complete Infarct Coverage Visualization
-============================================================
 Hydrogel covers ALL points touching infarct cells for continuous coverage.
 """
 
