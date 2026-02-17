@@ -8,8 +8,6 @@ with hydrogel treatment applied to infarct regions.
 Usage:
     python run_actual_febio_hydrogel.py --parallel --n_workers 96
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
