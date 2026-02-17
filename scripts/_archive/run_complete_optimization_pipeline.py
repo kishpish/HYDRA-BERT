@@ -23,8 +23,6 @@ Usage:
     python run_complete_optimization_pipeline.py --patient SCD0000101
     python run_complete_optimization_pipeline.py --report-only
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
