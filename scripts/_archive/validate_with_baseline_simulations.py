@@ -12,8 +12,6 @@ The workflow:
 4. Compare predictions with simulation baselines
 5. Generate validation report
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -491,14 +489,13 @@ def generate_validation_report(results: List[Dict], output_dir: Path):
 
     report += f"""
 
-## Key Findings
+## Findings
 
-1. **All patients achieve THERAPEUTIC status** with optimal hydrogel (GelMA_BioIL)
+1. **All patients achieve therapeautic status** with optimal hydrogel (GelMA_BioIL)
 2. **EF improvements range from +10-14%** (clinically significant)
 3. **Wall stress reduction exceeds 50%** in all patients
 4. **CV improvement ranges from 25-40%** with conductive hydrogel
 
-## Validation Notes
 
 - Baseline FEBio simulations used Holzapfel-Ogden cardiac material model
 - Baseline OpenCarp simulations used ten Tusscher-Panfilov ionic model
