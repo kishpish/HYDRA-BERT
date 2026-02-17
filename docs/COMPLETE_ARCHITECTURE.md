@@ -27,57 +27,57 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                           HYDRA-BERT SYSTEM ARCHITECTURE                             │
+│                           HYDRA-BERT SYSTEM ARCHITECTURE                            │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                      │
+│                                                                                     │
 │  ┌─────────────────────────────────────────────────────────────────────────────┐    │
-│  │                         STAGE 1: SUPERVISED LEARNING                         │    │
-│  │                                                                              │    │
+│  │                         STAGE 1: SUPERVISED LEARNING                        │    │
+│  │                                                                             │    │
 │  │   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐   │    │
 │  │   │  polyBERT    │───▶│  LoRA        │───▶│  Fusion      │───▶│ Multi-  │   │    │
 │  │   │  (86M frozen)│    │  Adapters    │    │  Network     │    │ Task    │   │    │
 │  │   │              │    │  (1.2M)      │    │  (467K)      │    │ Heads   │   │    │
 │  │   └──────────────┘    └──────────────┘    └──────────────┘    └─────────┘   │    │
-│  │                                                                              │    │
+│  │                                                                             │    │
 │  │   Input: SMILES + Patient Features + Hydrogel Properties                    │    │
 │  │   Output: Predicted ΔEF, Stress Reduction, is_optimal                       │    │
-│  │   Training: 447,480 samples, 15 epochs                                       │    │
-│  │                                                                              │    │
+│  │   Training: 447,480 samples, 15 epochs                                      │    │
+│  │                                                                             │    │
 │  └─────────────────────────────────────────────────────────────────────────────┘    │
-│                                         │                                            │
-│                                         ▼                                            │
+│                                         │                                           │
+│                                         ▼                                           │
 │  ┌─────────────────────────────────────────────────────────────────────────────┐    │
-│  │                     STAGE 2: REINFORCEMENT LEARNING (PPO)                    │    │
-│  │                                                                              │    │
+│  │                     STAGE 2: REINFORCEMENT LEARNING (PPO)                   │    │
+│  │                                                                             │    │
 │  │   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐   │    │
 │  │   │  State       │───▶│  Policy      │───▶│  Action      │───▶│ Reward  │   │    │
 │  │   │  Encoder     │    │  Network     │    │  Space       │    │ Model   │   │    │
 │  │   │  (Stage 1)   │    │  (Actor)     │    │  (Hybrid)    │    │         │   │    │
 │  │   └──────────────┘    └──────────────┘    └──────────────┘    └─────────┘   │    │
-│  │                                                                              │    │
+│  │                                                                             │    │
 │  │   State: Patient profile embedded                                           │    │
 │  │   Actions: Discrete (polymer) + Continuous (properties)                     │    │
-│  │   Reward: Combined therapeutic score                                         │    │
-│  │   Training: 1000 episodes, 50 steps each                                     │    │
-│  │                                                                              │    │
+│  │   Reward: Combined therapeutic score                                        │    │
+│  │   Training: 1000 episodes, 50 steps each                                    │    │
+│  │                                                                             │    │
 │  └─────────────────────────────────────────────────────────────────────────────┘    │
-│                                         │                                            │
-│                                         ▼                                            │
+│                                         │                                           │
+│                                         ▼                                           │
 │  ┌─────────────────────────────────────────────────────────────────────────────┐    │
-│  │                       STAGE 3: DESIGN GENERATION                             │    │
-│  │                                                                              │    │
+│  │                       STAGE 3: DESIGN GENERATION                            │    │
+│  │                                                                             │    │
 │  │   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌─────────┐   │    │
 │  │   │  10M Design  │───▶│  HYDRA-BERT  │───▶│  Multi-Stage │───▶│ Optimal │   │    │
 │  │   │  Generator   │    │  Inference   │    │  Filtering   │    │ Design  │   │    │
 │  │   │              │    │              │    │  (6 stages)  │    │         │   │    │
 │  │   └──────────────┘    └──────────────┘    └──────────────┘    └─────────┘   │    │
-│  │                                                                              │    │
+│  │                                                                             │    │
 │  │   Generation: 10M candidates per patient                                    │    │
-│  │   Filtering: 10M → 100K → 10K → 1K → 100 → 10 → 1                          │    │
+│  │   Filtering: 10M → 100K → 10K → 1K → 100 → 10 → 1                           │    │
 │  │   Validation: FEBio mechanics + OpenCarp electrophysiology                  │    │
-│  │                                                                              │    │
+│  │                                                                             │    │
 │  └─────────────────────────────────────────────────────────────────────────────┘    │
-│                                                                                      │
+│                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1253,7 +1253,7 @@ class HydraBERT(nn.Module):
 
 ## Conclusion
 
-The HYDRA-BERT architecture integrates molecular representation learning (polyBERT), efficient fine-tuning (LoRA), multi-modal fusion, and multi-task learning into a cohesive system for cardiac hydrogel optimization. The three-stage pipeline progressively refines hydrogel designs from 447,480 training samples through reinforcement learning to patient-specific optimal designs validated by physics simulations.
+The HYDRA-BERT architecture combines molecular representation learning (polyBERT), efficient fine-tuning (LoRA), multi-modal fusion, and multi-task learning into a cohesive system for cardiac hydrogel optimization. The three-stage pipeline progressively refines hydrogel designs from 447,480 training samples through reinforcement learning to patient-specific optimal designs validated by physics simulations.
 
 **Key Architectural Innovations:**
 1. LoRA-adapted polyBERT for polymer encoding with 97% parameter efficiency
