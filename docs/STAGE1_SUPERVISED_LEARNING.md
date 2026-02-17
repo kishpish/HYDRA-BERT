@@ -1,12 +1,12 @@
 # HYDRA-BERT Stage 1: Supervised Multi-Task Learning
 
-## Complete Technical Documentation
+##  Technical Documentation
 
 ---
 
 ## 1. Overview
 
-Stage 1 transforms the pre-trained polyBERT model into a cardiac hydrogel outcome predictor through supervised multi-task learning. The model learns to predict therapeutic outcomes (strain improvement, classification, safety scores) from polymer chemistry, formulation parameters, and patient-specific cardiac features.
+Stage 1 turns the pre-trained polyBERT model into a cardiac hydrogel outcome predictor through supervised multi-task learning. The model learns to predict therapeutic outcomes (strain improvement, classification, safety scores) from polymer chemistry, formulation parameters, and patient-specific cardiac features.
 
 ---
 
@@ -710,7 +710,7 @@ def compute_reward(polymer_smiles, formulation, patient_features):
 
 ---
 
-## 11. Key Implementation Files
+## 11.  Implementation Files
 
 | File | Description |
 |------|-------------|
