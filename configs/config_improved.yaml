@@ -1,0 +1,85 @@
+# HYDRA-BERT Improved Training Configuration
+# - Balanced 3-class classification
+# - Phase 1: Frozen polyBERT (15 epochs)
+# - Phase 2: Unfrozen polyBERT fine-tuning (10 epochs)
+
+model:
+  polybert_path: "kuelumbus/polyBERT"
+  num_property_features: 6
+  num_patient_features: 4
+  num_classes: 3
+  freeze_polybert: true  # Will be unfrozen in Phase 2
+  dropout: 0.15
+
+training:
+  # Phase 1: Transfer learning
+  epochs: 15
+  batch_size: 128
+  gradient_accumulation_steps: 2
+  learning_rate: 5.0e-4  # Higher LR for frozen encoder
+  warmup_steps: 1000
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  seed: 42
+
+  # Phase 2: Fine-tuning (enabled)
+  phase2_enabled: true
+  phase2_start_epoch: 16
+  phase2_epochs: 10
+  phase2_polybert_lr: 1.0e-5  # Very low LR for encoder
+  phase2_other_lr: 1.0e-4     # Higher LR for heads
+  layer_lr_decay: 0.9
+
+optimizer:
+  type: "adamw"
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+
+scheduler:
+  type: "cosine"
+  num_cycles: 0.5
+  min_lr_ratio: 0.01
+
+loss:
+  type: "hydra"
+  focal_gamma: 2.0
+  regression_beta: 1.0  # Lower for more sensitivity
+  aux_weight: 0.2
+  # Balanced class weights (slight boost for edge classes)
+  class_weights: [1.2, 1.0, 1.2]
+
+data:
+  data_path: "data/processed/POLYBERT_TRAINING_FINAL.csv"
+  train_split: 0.7
+  val_split: 0.2
+  test_split: 0.1
+  max_seq_length: 128
+  num_workers: 4
+  pin_memory: true
+  real_patient_weight: 3.0
+  use_patient_weighting: true
+
+evaluation:
+  eval_every_n_steps: 500
+  save_every_n_epochs: 1
+  early_stopping_patience: 8
+  early_stopping_metric: "val_loss"
+  target_mae: 1.0
+  target_r2: 0.85
+  target_accuracy: 0.70  # More realistic for 3 balanced classes
+  target_f1: 0.65
+
+logging:
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  results_dir: "results"
+  log_every_n_steps: 100
+  use_wandb: false
+  wandb_project: "hydra-bert"
+  wandb_entity: null
+
+distributed:
+  use_deepspeed: false
+  deepspeed_config: "configs/ds_config.json"
+  fp16: true
+  gradient_checkpointing: false
