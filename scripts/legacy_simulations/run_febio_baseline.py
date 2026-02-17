@@ -5,8 +5,6 @@ FEBio 4.0 Cardiac Mechanics Simulation Pipeline
 This script generates FEBio 4.0 simulation files for cardiac mechanics,
 runs simulations for multiple SCD patients, and extracts biomechanical metrics.
 
-Author: Cardiac Simulation Pipeline
-Version: 2.0
 """
 
 import os
