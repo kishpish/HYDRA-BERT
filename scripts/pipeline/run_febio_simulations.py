@@ -20,8 +20,6 @@ Usage:
     python run_febio_simulations.py --patient SCD0000101 --n-cpus 96
     python run_febio_simulations.py --all --n-cpus 96
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -298,7 +296,7 @@ def run_physics_based_simulation(design_row: pd.Series, patient_id: str) -> Dict
     # Thickness factor
     thickness_factor = min(1.0, thickness / 5.0) * (1.0 - max(0, thickness - 5) / 10)
 
-    # === Mechanical Metrics ===
+    #   Mechanical Metrics  
 
     # Wall stress reduction (Laplace Law modification)
     stress_baseline = baseline.get('peak_systolic_stress_border_kPa', 33.0)
