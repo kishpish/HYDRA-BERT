@@ -280,7 +280,7 @@ def create_rotation_animation(points, tissue_type, hydrogel_points,
     anim = FuncAnimation(fig, update, frames=n_frames, interval=100, blit=False)
 
     save_path = OUTPUT_DIR / filename
-    print(f"  Saving animation ({n_frames} frames)...")
+    print(f"  Saving animation ({n_frames} frames) ")
     anim.save(str(save_path), writer=PillowWriter(fps=10))
     plt.close()
     print(f"  Saved: {save_path}")
@@ -289,27 +289,27 @@ def create_rotation_animation(points, tissue_type, hydrogel_points,
 def main():
     print("PATIENT SCD0000101 - COMPLETE HYDROGEL COVERAGE")
 
-    print("\n1. Loading mesh with tissue classification...")
+    print("\n1. Loading mesh with tissue classification ")
     points, tissue_type, point_in_infarct, point_in_border = load_mesh_and_classify()
 
-    print("\n2. Creating complete hydrogel coverage...")
+    print("\n2. Creating complete hydrogel coverage ")
     hydrogel_points, hydrogel_indices = create_complete_hydrogel(points, point_in_infarct)
 
-    print("\n3. Generating visualizations...")
+    print("\n3. Generating visualizations ")
 
-    print("\n  3a. Complete coverage view...")
+    print("\n  3a. Complete coverage view ")
     render_complete_coverage(points, tissue_type, hydrogel_points,
                               filename='patient001_complete_coverage.png')
 
-    print("\n  3b. Side-by-side comparison...")
+    print("\n  3b. Side-by-side comparison ")
     render_side_by_side(points, tissue_type, hydrogel_points,
                          filename='patient001_coverage_comparison.png')
 
-    print("\n  3c. Multi-angle views...")
+    print("\n  3c. Multi-angle views ")
     render_multi_angle_complete(points, tissue_type, hydrogel_points,
                                  filename='patient001_complete_angles.png')
 
-    print("\n  3d. Rotation animation...")
+    print("\n  3d. Rotation animation ")
     create_rotation_animation(points, tissue_type, hydrogel_points,
                                n_frames=36, filename='patient001_complete_rotation.gif')
 
