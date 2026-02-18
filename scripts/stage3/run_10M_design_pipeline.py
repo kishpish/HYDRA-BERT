@@ -6,7 +6,7 @@ This is the main production script for generating 10 million patient-specific
 hydrogel designs using the trained HYDRA-BERT model and multi-GPU parallelization.
 
 Pipeline Overview:
-==================
+
 1. Generate 10M candidate designs per patient (total: 100M designs)
 2. Score with HYDRA-BERT model (10 key metrics)
 3. Filter to top 10,000 by filtering score
@@ -16,19 +16,19 @@ Pipeline Overview:
 7. Generate validation reports and export results
 
 Hardware Requirements:
-=====================
+
 - 16 GPUs (NVIDIA A100 40GB recommended)
 - ~640GB GPU memory total
 - ~256GB system RAM
 - ~500GB disk space for results
 
 Estimated Runtime:
-=================
+
 - 10M designs per patient: ~20-30 minutes
 - 10 patients total: ~3-4 hours
 
 Usage:
-======
+
     # Full pipeline (10M designs, 10 patients)
     python run_10M_design_pipeline.py
 
@@ -36,7 +36,7 @@ Usage:
     python run_10M_design_pipeline.py --designs_per_patient 1000000 --num_gpus 8
 
 Output:
-=======
+
     results/therapeutic/
     ├── all_results.json           # Complete results
     ├── therapeutic_summary.txt    # Summary report
@@ -47,8 +47,6 @@ Output:
         ├── top_100_full_metrics.csv
         └── validation_report.txt
 
-Author: HYDRA-BERT Team
-Version: 1.0.0
 """
 
 import os
@@ -448,25 +446,19 @@ def generate_patient_report(
     """Generate patient-specific validation report."""
 
     with open(output_path, 'w') as f:
-        f.write("=" * 80 + "\n")
         f.write("THERAPEUTIC VALIDATION REPORT\n")
-        f.write("=" * 80 + "\n\n")
 
         f.write(f"Patient ID: {patient_config.patient_id}\n")
         f.write(f"Baseline LVEF: {patient_config.baseline_LVEF_pct:.1f}%\n")
         f.write(f"Scar Fraction: {patient_config.scar_fraction_pct:.1f}%\n")
         f.write(f"Border Zone: {patient_config.bz_fraction_pct:.1f}%\n\n")
 
-        f.write("-" * 80 + "\n")
         f.write("SUMMARY\n")
-        f.write("-" * 80 + "\n")
         f.write(f"  THERAPEUTIC designs: {len(therapeutic_designs)}\n")
         f.write(f"  SUPPORTIVE designs: {len(supportive_designs)}\n")
         f.write(f"  Pareto-optimal: {len(pareto_optimal)}\n\n")
 
-        f.write("-" * 80 + "\n")
         f.write("TOP DESIGNS\n")
-        f.write("-" * 80 + "\n\n")
 
         for i, design in enumerate(final_designs[:5], 1):
             cls = design.get("therapeutic_classification", {})
@@ -476,7 +468,6 @@ def generate_patient_report(
             f.write(f"  Delta EF: +{design.get('delta_EF_pct', 0):.2f}%\n")
             f.write(f"  Stiffness: {design.get('hydrogel_E_kPa', 0):.1f} kPa\n\n")
 
-        f.write("=" * 80 + "\n")
 
 
 def main():
@@ -582,11 +573,8 @@ def main():
     print(f"Patients processed: "
           f"{sum(1 for r in results if r.get('status') == 'success')}/{len(REAL_PATIENTS)}")
 
-    print("\n" + "-" * 80)
     print("RESULTS SUMMARY")
-    print("-" * 80)
     print(f"{'Patient':<12} {'THERAPEUTIC':<12} {'SUPPORTIVE':<12} {'Best ΔEF':<10}")
-    print("-" * 80)
 
     total_therapeutic = 0
     total_supportive = 0
@@ -603,9 +591,7 @@ def main():
         else:
             print(f"{patient_id:<12} ERROR: {result.get('error', 'Unknown')[:30]}")
 
-    print("-" * 80)
     print(f"{'TOTAL':<12} {total_therapeutic:<12} {total_supportive:<12}")
-    print("-" * 80)
 
     print(f"\nResults saved to: {Path(config['OUTPUT_DIR']).absolute()}")
 
