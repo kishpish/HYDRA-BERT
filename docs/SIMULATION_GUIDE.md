@@ -2,7 +2,7 @@
 
 ## Running ACTUAL FEBio and OpenCarp Simulations
 
-This guide explains how to run real finite element simulations (not surrogate models) to validate HYDRA-BERT's therapeutic predictions.
+This guide explains how to run real finite element simulations to validate HYDRA-BERT's therapeutic predictions.
 
 ---
 
