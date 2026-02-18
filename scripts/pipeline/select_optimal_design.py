@@ -27,8 +27,6 @@ Usage:
     python select_optimal_design.py --patient SCD0000101
     python select_optimal_design.py --all
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -348,9 +346,7 @@ def main():
         parser.print_help()
         return
 
-    logger.info("="*70)
     logger.info("HYDRA-BERT: Optimal Design Selection")
-    logger.info("="*70)
 
     all_results = []
     for patient_id in patients:
@@ -360,10 +356,8 @@ def main():
     # Generate final report
     generate_final_report(all_results)
 
-    logger.info("\n" + "="*70)
     logger.info("Optimal Design Selection Complete!")
     logger.info(f"Results saved to: {OUTPUT_DIR}")
-    logger.info("="*70)
 
 
 if __name__ == "__main__":
