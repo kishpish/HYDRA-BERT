@@ -458,16 +458,12 @@ def main():
         parser.print_help()
         return
 
-    logger.info("="*70)
     logger.info("HYDRA-BERT: FEBio Simulation Pipeline")
-    logger.info("="*70)
     logger.info(f"Patients: {len(patients)}")
     logger.info(f"CPUs available: {args.n_cpus}")
 
     for patient_id in patients:
-        logger.info(f"\n{'='*50}")
         logger.info(f"Processing {patient_id}")
-        logger.info(f"{'='*50}")
 
         start_time = datetime.now()
         result_df = run_febio_for_patient(patient_id, args.n_cpus)
@@ -477,10 +473,8 @@ def main():
             n_success = result_df['success'].sum() if 'success' in result_df.columns else 0
             logger.info(f"  Completed: {n_success}/{len(result_df)} successful in {elapsed:.1f}s")
 
-    logger.info("\n" + "="*70)
     logger.info("FEBio Simulations Complete!")
     logger.info(f"Results saved to: {OUTPUT_DIR}")
-    logger.info("="*70)
 
 
 if __name__ == "__main__":
