@@ -6,7 +6,7 @@ Fine-tunes the HYDRA-BERT model using Proximal Policy Optimization (PPO)
 to optimize hydrogel design generation for therapeutic outcomes.
 
 PPO Training:
-============
+
 - Actor: Generates design parameters (stiffness, thickness, coverage, etc.)
 - Critic: Estimates value of patient-design state
 - Reward: Multi-objective score based on:
@@ -16,13 +16,13 @@ PPO Training:
   - Safety metrics (weight: 0.2)
 
 Parallel Environments:
-====================
+
 - 2000 parallel environments (125 per GPU x 16 GPUs)
 - Each environment simulates a patient-design interaction
 - Vectorized for efficiency
 
 Usage:
-======
+
     # Full PPO training
     python train_ppo.py
 
@@ -30,7 +30,7 @@ Usage:
     python train_ppo.py --num_iterations 300 --env_per_gpu 200
 
 Output:
-=======
+
     checkpoints/stage2/
     ├── ppo_model.pt           # Best PPO model
     ├── actor_final.pt         # Final actor network
@@ -38,7 +38,7 @@ Output:
     ├── training_curves.json   # Reward/loss curves
     └── config.yaml            # Training configuration
 
-Author: HYDRA-BERT Team
+Author: Krishiv Potluri
 Version: 1.0.0
 """
 
