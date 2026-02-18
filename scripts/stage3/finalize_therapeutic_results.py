@@ -19,7 +19,6 @@ Output:
     │   └── {patient_id}_designs.csv
     └── FINAL_VALIDATION_REPORT.md
 
-Author: HYDRA-BERT Team
 """
 
 import json
