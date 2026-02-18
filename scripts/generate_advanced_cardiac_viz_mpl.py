@@ -699,46 +699,46 @@ def main():
     print("GENERATING ADVANCED 3D CARDIAC VISUALIZATIONS")
 
     # Create mesh
-    print("\n1. Creating anatomically accurate LV mesh...")
+    print("\n1. Creating anatomically accurate LV mesh ")
     mesh = AnatomicalLVMesh(n_circ=70, n_long=45, n_trans=10)
     print(f"   Mesh: {len(mesh.points)} points")
 
     # Compute properties
-    print("\n2. Computing tissue properties...")
+    print("\n2. Computing tissue properties ")
     mesh.compute_regions()
     mesh.compute_fiber_angles()
 
     # Baseline condition
-    print("\n3. Creating baseline (untreated) visualization...")
+    print("\n3. Creating baseline (untreated) visualization ")
     mesh_baseline = AnatomicalLVMesh(n_circ=70, n_long=45, n_trans=10)
     mesh_baseline.compute_regions()
     mesh_baseline.compute_stress(with_hydrogel=False, time_phase=0.5)
     mesh_baseline.compute_strain(with_hydrogel=False, time_phase=0.5)
 
     # With hydrogel
-    print("\n4. Creating hydrogel treatment visualization...")
+    print("\n4. Creating hydrogel treatment visualization ")
     mesh_hydrogel = AnatomicalLVMesh(n_circ=70, n_long=45, n_trans=10)
     mesh_hydrogel.compute_regions()
     mesh_hydrogel.compute_stress(with_hydrogel=True, time_phase=0.5)
     mesh_hydrogel.compute_strain(with_hydrogel=True, time_phase=0.5)
 
     # Generate visualizations
-    print("\n5. Generating high-quality visualizations...")
+    print("\n5. Generating high-quality visualizations ")
 
-    print("   5a. Dramatic stress comparison...")
+    print("   5a. Dramatic stress comparison ")
     render_dramatic_comparison(mesh_baseline, mesh_hydrogel, "stress_comparison_dramatic.png")
 
-    print("   5b. Strain comparison...")
+    print("   5b. Strain comparison ")
     render_strain_comparison(mesh_baseline, mesh_hydrogel, "strain_comparison_detailed.png")
 
-    print("   5c. Fiber architecture...")
+    print("   5c. Fiber architecture ")
     render_fiber_architecture(mesh, "fiber_architecture_detailed.png")
 
-    print("   5d. Multi-view visualization...")
+    print("   5d. Multi-view visualization ")
     render_multiview(mesh_hydrogel, hydrogel=True, filename="multiview_hydrogel.png")
 
     # Animation
-    print("\n6. Creating animation frames...")
+    print("\n6. Creating animation frames ")
     create_animation_frames(mesh_hydrogel, n_frames=24)
 
     print("ADVANCED VISUALIZATION COMPLETE")
