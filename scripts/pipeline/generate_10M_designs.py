@@ -380,9 +380,7 @@ def main():
         parser.print_help()
         return
 
-    logger.info("="*70)
     logger.info("HYDRA-BERT: 10 Million Design Generation Pipeline")
-    logger.info("="*70)
     logger.info(f"Patients: {len(patients)}")
     logger.info(f"Designs per patient: {args.n_designs:,}")
     logger.info(f"Top K output: {args.top_k}")
@@ -390,9 +388,7 @@ def main():
     all_results = []
 
     for patient_id in patients:
-        logger.info(f"\n{'='*50}")
         logger.info(f"Processing {patient_id}")
-        logger.info(f"{'='*50}")
 
         start_time = datetime.now()
 
@@ -417,10 +413,8 @@ def main():
     combined_df = pd.concat(all_results, ignore_index=True)
     combined_df.to_csv(OUTPUT_DIR / "all_top_designs.csv", index=False)
 
-    logger.info("\n" + "="*70)
     logger.info("Design Generation Complete!")
     logger.info(f"Results saved to: {OUTPUT_DIR}")
-    logger.info("="*70)
 
 
 if __name__ == "__main__":
