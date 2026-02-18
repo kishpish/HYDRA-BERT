@@ -23,8 +23,6 @@ Usage:
     python generate_10M_designs.py --patient SCD0000101
     python generate_10M_designs.py --all --gpus 16
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
