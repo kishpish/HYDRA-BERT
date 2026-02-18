@@ -22,8 +22,6 @@ Usage:
     python run_full_pipeline.py --step opencarp --all
     python run_full_pipeline.py --step select --all
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -211,9 +209,7 @@ Examples:
 
     print_pipeline_overview()
 
-    logger.info("="*70)
     logger.info("HYDRA-BERT: Complete Pipeline Execution")
-    logger.info("="*70)
     logger.info(f"Patients: {len(patients)}")
     logger.info(f"Designs per patient: {args.n_designs:,}")
     logger.info(f"GPUs: {args.gpus}")
@@ -232,9 +228,7 @@ Examples:
     success = True
 
     for step_name, script_name, description in steps:
-        logger.info(f"\n{'='*60}")
         logger.info(f"STEP: {description.upper()}")
-        logger.info(f"{'='*60}")
 
         if not run_step(step_name, script_name, patients, args.gpus, args.cpus):
             logger.error(f"Pipeline failed at step: {step_name}")
@@ -244,7 +238,6 @@ Examples:
     pipeline_elapsed = (datetime.now() - pipeline_start).total_seconds()
 
     # Final summary
-    logger.info("\n" + "="*70)
     if success:
         logger.info("PIPELINE COMPLETED SUCCESSFULLY!")
     else:
@@ -252,7 +245,6 @@ Examples:
 
     logger.info(f"Total time: {pipeline_elapsed:.1f}s ({pipeline_elapsed/60:.1f} minutes)")
     logger.info(f"End time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    logger.info("="*70)
 
     # Print results location
     if success:
