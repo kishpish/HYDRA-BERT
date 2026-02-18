@@ -5,8 +5,6 @@ HYDRA-BERT Therapeutic Thresholds - Final Production Configuration
 These thresholds define clinical significance for cardiac hydrogel therapy.
 Based on FDA guidance for cardiac regenerative therapies and clinical literature.
 
-Author: HYDRA-BERT Team
-Version: 1.0.0 (Production)
 """
 
 from dataclasses import dataclass
