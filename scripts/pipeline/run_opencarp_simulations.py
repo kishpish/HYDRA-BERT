@@ -20,8 +20,6 @@ Usage:
     python run_opencarp_simulations.py --patient SCD0000101 --n-cpus 96
     python run_opencarp_simulations.py --all --n-cpus 96
 
-Author: HYDRA-BERT Pipeline
-Date: 2026-02-09
 """
 
 import os
@@ -453,14 +451,10 @@ def main():
         parser.print_help()
         return
 
-    logger.info("="*70)
     logger.info("HYDRA-BERT: OpenCarp EP Simulation Pipeline")
-    logger.info("="*70)
 
     for patient_id in patients:
-        logger.info(f"\n{'='*50}")
         logger.info(f"Processing {patient_id}")
-        logger.info(f"{'='*50}")
 
         start_time = datetime.now()
         result_df = run_opencarp_for_patient(patient_id, args.n_cpus)
@@ -470,10 +464,8 @@ def main():
             n_success = result_df['success'].sum() if 'success' in result_df.columns else 0
             logger.info(f"  Completed: {n_success}/{len(result_df)} successful in {elapsed:.1f}s")
 
-    logger.info("\n" + "="*70)
     logger.info("OpenCarp Simulations Complete!")
     logger.info(f"Results saved to: {OUTPUT_DIR}")
-    logger.info("="*70)
 
 
 if __name__ == "__main__":
