@@ -218,7 +218,6 @@ cat results/final_optimal_designs/SCD0000101/optimal_design.csv
 @software{hydra_bert_2026,
   author={Krishiv Potluri},
   year={2026},
-  url={https://github.com/your-org/HYDRA-BERT}
 }
 ```
 
