@@ -6,13 +6,12 @@ Trains the HYDRA-BERT model on cardiac hydrogel outcome prediction using
 supervised learning with multiple prediction heads.
 
 Training Tasks:
-==============
 1. Primary Regression: delta_EF_pct (ejection fraction improvement)
 2. Primary Classification: is_optimal (binary: meets therapeutic criteria)
 3. Auxiliary Regression: delta_BZ_stress_reduction_pct, strain_normalization_pct
 
 Model Architecture:
-==================
+
 - polyBERT encoder (frozen initially) → 600-dim SMILES embedding
 - SMILES adapter: 600 → 384 → 256
 - Property encoder: 19 features → 64 → 128
@@ -21,12 +20,12 @@ Model Architecture:
 - Multiple prediction heads
 
 Training Strategy:
-================
+
 - Phase 1 (epochs 1-15): polyBERT frozen, train adapters + heads
 - Phase 2 (epochs 16-25): unfreeze polyBERT with differential LR
 
 Usage:
-======
+
     # Single GPU training
     python train_supervised.py
 
@@ -37,14 +36,14 @@ Usage:
     python train_supervised.py --config configs/custom_config.yaml
 
 Output:
-=======
+
     checkpoints/stage1/
     ├── best_model.pt          # Best model by validation loss
     ├── final_model.pt         # Final epoch model
     ├── training_history.json  # Loss/metric curves
     └── config.yaml            # Training configuration
 
-Author: HYDRA-BERT Team
+Author: Krishiv Potluri
 Version: 1.0.0
 """
 
