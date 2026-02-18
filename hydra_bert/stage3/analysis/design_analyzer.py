@@ -306,16 +306,16 @@ def generate_patient_report(
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     report = f"""
-================================================================================
+
 HYDRA-BERT PATIENT-SPECIFIC HYDROGEL DESIGN REPORT
-================================================================================
+
 
 Generated: {timestamp}
 Patient ID: {patient_config.patient_id}
 
---------------------------------------------------------------------------------
+
 PATIENT BASELINE CHARACTERISTICS
---------------------------------------------------------------------------------
+
 
 Cardiac Function:
   - Baseline LVEF: {patient_config.baseline_LVEF_pct:.1f}%
@@ -338,9 +338,9 @@ Infarct Location:
   - AHA Segments: {patient_config.infarct_geometry.segments}
   - Injection Sites: {len(patient_config.injection_sites)}
 
---------------------------------------------------------------------------------
+
 DESIGN GENERATION SUMMARY
---------------------------------------------------------------------------------
+
 
 Design Space Exploration:
   - Total Designs Generated: {analysis.total_designs:,}
@@ -362,9 +362,9 @@ Top Polymer Types:
         report += f"  - {polymer}: {count:,} designs (avg score: {avg_score:.1f})\n"
 
     report += f"""
---------------------------------------------------------------------------------
+
 OPTIMAL DESIGN SELECTION
---------------------------------------------------------------------------------
+
 
 BEST DESIGN: {best_design.get('design_id', 'N/A')}
 
@@ -402,9 +402,9 @@ Composite Scores:
   - Electrical Score: {best_design.get('electrical_score', 0):.1f}/100
   - TOTAL SCORE: {best_design.get('total_score', 0):.1f}/100 (Rank #{best_design.get('rank', 0)})
 
---------------------------------------------------------------------------------
+
 TOP 10 ALTERNATIVE DESIGNS
---------------------------------------------------------------------------------
+
 """
 
     # Add top 10 alternatives
@@ -417,9 +417,9 @@ Rank #{i}: {design.get('design_id', 'N/A')}
 """
 
     report += f"""
---------------------------------------------------------------------------------
-RECOMMENDATIONS
---------------------------------------------------------------------------------
+
+RECOMMENDATIONS:
+
 
 Based on this analysis, the recommended hydrogel formulation for patient
 {patient_config.patient_id} is:
@@ -437,9 +437,10 @@ Expected clinical outcome:
 
 Safety assessment: {'ACCEPTABLE' if best_design.get('toxicity_score', 1) < 0.15 else 'REQUIRES REVIEW'}
 
-================================================================================
+-
+
 END OF REPORT
-================================================================================
+
 """
 
     # Save report
@@ -467,16 +468,15 @@ def generate_summary_report(
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     report = f"""
-================================================================================
-HYDRA-BERT COMPREHENSIVE HYDROGEL DESIGN SUMMARY
-================================================================================
+HYDRA-BERT  HYDROGEL DESIGN SUMMARY
+
 
 Generated: {timestamp}
 Number of Patients: {len(all_patient_results)}
 
---------------------------------------------------------------------------------
+
 PATIENT-SPECIFIC OPTIMAL DESIGNS
---------------------------------------------------------------------------------
+
 
 """
 
@@ -502,9 +502,7 @@ PATIENT-SPECIFIC OPTIMAL DESIGNS
 
     report += f"""
 
---------------------------------------------------------------------------------
 AGGREGATE STATISTICS
---------------------------------------------------------------------------------
 
 Overall Performance:
   - Mean Delta EF: {df['Delta EF (%)'].mean():.2f}% ± {df['Delta EF (%)'].std():.2f}%
@@ -527,9 +525,9 @@ Coverage Distribution in Optimal Designs:
         report += f"  - {coverage}: {count} patients ({100*count/len(df):.0f}%)\n"
 
     report += f"""
---------------------------------------------------------------------------------
+
 KEY FINDINGS
---------------------------------------------------------------------------------
+
 
 1. Patient-Specific Optimization:
    - Each patient received a uniquely optimized hydrogel formulation
@@ -543,9 +541,9 @@ KEY FINDINGS
    - All optimal designs predict clinically meaningful EF improvements (>3%)
    - Safety thresholds maintained across all recommended designs
 
-================================================================================
+-
+
 END OF SUMMARY REPORT
-================================================================================
 """
 
     with open(output_path, 'w') as f:
