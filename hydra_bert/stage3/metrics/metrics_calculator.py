@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Comprehensive Metrics Calculator
+Metrics Calculator
 
 Calculates all metrics matching the baseline data format including:
 - Cardiac function metrics (EF, GLS, volumes)
